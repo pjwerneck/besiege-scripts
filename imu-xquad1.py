@@ -8,7 +8,7 @@ from bsg.rotor import XQuad
 CONFIG = {
     # The motor speed at which the vehicle hovers, maintaining current
     # altitude.
-    'hovering_speed': 1.13,
+    'hovering_speed': 1.16,
 
     # The core block. This isn't necessarily the starting block, but
     # it should be at or very close to the center of mass and at the
@@ -55,7 +55,7 @@ CONFIG = {
 
     # Rate mode PID controller gain values, (Kp, Ki, Kd).
     'rate_gain_pitch': (0.023, 0, 0),
-    'rate_gain_yaw': (0.039, 0, 0.0),
+    'rate_gain_yaw': (0.039, 0, 0),
     'rate_gain_roll': (0.023, 0, 0),
 
     # Multiplier applied to the axes values in rate mode. This is the

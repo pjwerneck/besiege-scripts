@@ -3,7 +3,7 @@
 <Machine version="1" bsgVersion="1.3" name="imu-xquad1">
     <!--The machine's position and rotation.-->
     <Global>
-        <Position x="3.72529E-09" y="1.5" z="3.218798E-08" />
+        <Position x="0" y="4.82731" z="-5.61152E-08" />
         <Rotation x="0" y="0" z="0" w="1" />
     </Global>
     <!--The machine's additional data or modded data.-->
@@ -639,137 +639,9 @@ def Update():
                 <Boolean key="flipped">False</Boolean>
             </Data>
         </Block>
-        <Block id="7" guid="f4f44c21-1626-4118-84ff-26a53c5e38d6">
-            <Transform>
-                <Position x="-5.015999" y="-1" z="-5.532001" />
-                <Rotation x="-2.980232E-07" y="1" z="7.450587E-08" w="-2.086162E-07" />
-                <Scale x="1" y="1" z="1" />
-            </Transform>
-            <Settings>
-                <Skin name="default" id="default" />
-            </Settings>
-            <Data>
-                <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
-                </Vector3>
-                <Vector3 key="start-rotation">
-                    <X>-8.537737E-06</X>
-                    <Y>180</Y>
-                    <Z>-3.415096E-05</Z>
-                </Vector3>
-                <Vector3 key="end-position">
-                    <X>-10.048</X>
-                    <Y>-6.225108E-06</Y>
-                    <Z>-0.01600494</Z>
-                </Vector3>
-                <Vector3 key="end-rotation">
-                    <X>3.24434E-05</X>
-                    <Y>180</Y>
-                    <Z>-3.244339E-05</Z>
-                </Vector3>
-            </Data>
-        </Block>
-        <Block id="7" guid="99ed41b2-a875-4cab-839e-653c7098fdf0">
-            <Transform>
-                <Position x="5.532001" y="-0.9999998" z="-5.016" />
-                <Rotation x="-4.003951E-07" y="0.7071069" z="-2.107341E-08" w="0.7071066" />
-                <Scale x="1" y="1" z="1" />
-            </Transform>
-            <Settings>
-                <Skin name="default" id="default" />
-            </Settings>
-            <Data>
-                <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
-                </Vector3>
-                <Vector3 key="start-rotation">
-                    <X>-3.073585E-05</X>
-                    <Y>90.00002</Y>
-                    <Z>-3.415095E-05</Z>
-                </Vector3>
-                <Vector3 key="end-position">
-                    <X>-10.032</X>
-                    <Y>-6.158352E-06</Y>
-                    <Z>-3.814697E-06</Z>
-                </Vector3>
-                <Vector3 key="end-rotation">
-                    <X>1.024529E-05</X>
-                    <Y>90.00002</Y>
-                    <Z>-2.049058E-05</Z>
-                </Vector3>
-            </Data>
-        </Block>
-        <Block id="7" guid="c6524336-64b1-423c-a865-714c6d809f19">
-            <Transform>
-                <Position x="5.032001" y="-0.9999998" z="5.516" />
-                <Rotation x="-1.341105E-07" y="8.940697E-08" z="-2.980234E-08" w="1" />
-                <Scale x="1" y="1" z="1" />
-            </Transform>
-            <Settings>
-                <Skin name="default" id="default" />
-            </Settings>
-            <Data>
-                <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
-                </Vector3>
-                <Vector3 key="start-rotation">
-                    <X>-1.536793E-05</X>
-                    <Y>1.024529E-05</Y>
-                    <Z>-3.415098E-06</Z>
-                </Vector3>
-                <Vector3 key="end-position">
-                    <X>-10.048</X>
-                    <Y>-7.820134E-07</Y>
-                    <Z>0.01599943</Z>
-                </Vector3>
-                <Vector3 key="end-rotation">
-                    <X>-2.638895E-19</X>
-                    <Y>2.049057E-05</Y>
-                    <Z>1.475777E-12</Z>
-                </Vector3>
-            </Data>
-        </Block>
-        <Block id="7" guid="65530082-cdba-463b-a0a6-c514d779ca05">
-            <Transform>
-                <Position x="-5.516001" y="-1" z="5.032001" />
-                <Rotation x="-4.214685E-08" y="-0.7071066" z="8.792519E-15" w="0.7071069" />
-                <Scale x="1" y="1" z="1" />
-            </Transform>
-            <Settings>
-                <Skin name="default" id="default" />
-            </Settings>
-            <Data>
-                <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
-                </Vector3>
-                <Vector3 key="start-rotation">
-                    <X>-3.415095E-06</X>
-                    <Y>270</Y>
-                    <Z>3.415094E-06</Z>
-                </Vector3>
-                <Vector3 key="end-position">
-                    <X>-10.064</X>
-                    <Y>3.614431E-07</Y>
-                    <Z>-7.629395E-06</Z>
-                </Vector3>
-                <Vector3 key="end-rotation">
-                    <X>3.415096E-05</X>
-                    <Y>270</Y>
-                    <Z>-1.024527E-05</Z>
-                </Vector3>
-            </Data>
-        </Block>
         <Block id="7" guid="9e412e63-270f-4367-8be4-b83f36859ae2">
             <Transform>
-                <Position x="4.532001" y="-0.9999999" z="5.016" />
+                <Position x="4.532001" y="-1" z="5.016" />
                 <Rotation x="-1.896608E-07" y="-0.7071066" z="6.322028E-08" w="0.7071069" />
                 <Scale x="1" y="1" z="1" />
             </Transform>
@@ -785,7 +657,7 @@ def Update():
                 <Vector3 key="start-rotation">
                     <X>-1.024528E-05</X>
                     <Y>270</Y>
-                    <Z>2.049056E-05</Z>
+                    <Z>2.049057E-05</Z>
                 </Vector3>
                 <Vector3 key="end-position">
                     <X>-4.515999</X>
@@ -817,7 +689,7 @@ def Update():
                 <Vector3 key="start-rotation">
                     <X>1.536793E-05</X>
                     <Y>180</Y>
-                    <Z>3.415098E-06</Z>
+                    <Z>3.415097E-06</Z>
                 </Vector3>
                 <Vector3 key="end-position">
                     <X>4.532</X>
@@ -833,7 +705,7 @@ def Update():
         </Block>
         <Block id="7" guid="554785af-03fc-46b9-9963-0c11ab5e75b9">
             <Transform>
-                <Position x="-4.516001" y="-1" z="5.032001" />
+                <Position x="-4.516001" y="-0.9999998" z="5.032001" />
                 <Rotation x="-1.004859E-14" y="0.7071069" z="-4.214684E-08" w="0.7071066" />
                 <Scale x="1" y="1" z="1" />
             </Transform>
@@ -853,7 +725,7 @@ def Update():
                 </Vector3>
                 <Vector3 key="end-position">
                     <X>4.531998</X>
-                    <Y>1</Y>
+                    <Y>0.9999999</Y>
                     <Z>4.516001</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
@@ -889,9 +761,9 @@ def Update():
                     <Z>4.532</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
-                    <X>1.372676E-19</X>
+                    <X>3.43169E-19</X>
                     <Y>270</Y>
-                    <Z>-2.745351E-19</Z>
+                    <Z>-4.804365E-19</Z>
                 </Vector3>
             </Data>
         </Block>
@@ -921,9 +793,9 @@ def Update():
                     <Z>4.532003</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
-                    <X>4.318065E-12</X>
+                    <X>7.772517E-12</X>
                     <Y>270</Y>
-                    <Z>8.636129E-13</Z>
+                    <Z>4.318065E-12</Z>
                 </Vector3>
             </Data>
         </Block>
@@ -943,25 +815,25 @@ def Update():
                     <Z>0</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
-                    <X>-3.415095E-05</X>
+                    <X>-3.415096E-05</X>
                     <Y>90.00002</Y>
                     <Z>1.024527E-05</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>-4.532</X>
-                    <Y>0.9999979</Y>
-                    <Z>4.515999</Z>
+                    <X>-4.531997</X>
+                    <Y>0.9999977</Y>
+                    <Z>4.516002</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
-                    <X>2.442666E-12</X>
+                    <X>7.327998E-12</X>
                     <Y>180</Y>
-                    <Z>-8.142218E-13</Z>
+                    <Z>-2.442665E-12</Z>
                 </Vector3>
             </Data>
         </Block>
         <Block id="7" guid="05eee26f-ac03-4d33-9a4b-0849d5a27122">
             <Transform>
-                <Position x="4.532001" y="-0.9999999" z="-5.016" />
+                <Position x="4.532001" y="-1" z="-5.016" />
                 <Rotation x="-2.107342E-08" y="-0.7071066" z="4.003951E-07" w="0.7071069" />
                 <Scale x="1" y="1" z="1" />
             </Transform>
@@ -981,13 +853,13 @@ def Update():
                 </Vector3>
                 <Vector3 key="end-position">
                     <X>4.515997</X>
-                    <Y>0.9999999</Y>
+                    <Y>0.9999997</Y>
                     <Z>4.532001</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
-                    <X>3.256887E-12</X>
+                    <X>9.770663E-12</X>
                     <Y>180</Y>
-                    <Z>6.208443E-12</Z>
+                    <Z>1.272222E-11</Z>
                 </Vector3>
             </Data>
         </Block>
@@ -1013,13 +885,13 @@ def Update():
                 </Vector3>
                 <Vector3 key="end-position">
                     <X>-4.532002</X>
-                    <Y>0.9999998</Y>
+                    <Y>1</Y>
                     <Z>4.515999</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
-                    <X>5.75742E-12</X>
+                    <X>9.211872E-12</X>
                     <Y>90</Y>
-                    <Z>-3.454452E-12</Z>
+                    <Z>-6.908903E-12</Z>
                 </Vector3>
             </Data>
         </Block>
@@ -1044,6 +916,262 @@ def Update():
                 <Single key="bmt-yaw">0</Single>
                 <Single key="bmt-smooth">0.75</Single>
                 <Single key="bmt-fov">70</Single>
+            </Data>
+        </Block>
+        <Block id="7" guid="d07a0759-a9ba-4a06-88fc-d3f4db2a2e90">
+            <Transform>
+                <Position x="5.032001" y="-1.5" z="5.016" />
+                <Rotation x="0.7071067" y="1.053671E-07" z="-1.47514E-07" w="0.7071068" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>89.98022</X>
+                    <Y>1.707547E-05</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-10.048</X>
+                    <Y>0.01599763</Y>
+                    <Z>6.03497E-07</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>90</X>
+                    <Y>2.732075E-05</Y>
+                    <Z>0</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="b7e92151-0262-4e42-9d4e-4583313a18c0">
+            <Transform>
+                <Position x="-5.015999" y="-1.5" z="-5.032001" />
+                <Rotation x="0.7071068" y="3.582482E-07" z="6.322028E-08" w="0.7071067" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>89.98022</X>
+                    <Y>5.80566E-05</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-6.583211E-06</X>
+                    <Y>10.064</Y>
+                    <Z>-9.536743E-07</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>90</X>
+                    <Y>2.732075E-05</Y>
+                    <Z>0</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="fb3bfe9a-c316-46fa-b612-faea23b49188">
+            <Transform>
+                <Position x="5.032001" y="-1.5" z="-5.016" />
+                <Rotation x="0.7071066" y="3.68785E-07" z="3.161003E-08" w="0.7071071" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>90</X>
+                    <Y>5.976413E-05</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-10.048</X>
+                    <Y>-0.01600602</Y>
+                    <Z>-5.699694E-06</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>90</X>
+                    <Y>5.805661E-05</Y>
+                    <Z>0</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="7a23884d-2b8d-4aa7-947c-efe8938ebd89">
+            <Transform>
+                <Position x="5.032001" y="-1.5" z="5.016" />
+                <Rotation x="0.7071067" y="1.053671E-07" z="-1.47514E-07" w="0.7071068" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>89.98022</X>
+                    <Y>1.707547E-05</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>3.58772E-06</X>
+                    <Y>-10.03199</Y>
+                    <Z>-1.907349E-06</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>90</X>
+                    <Y>5.976414E-05</Y>
+                    <Z>0</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="65530082-cdba-463b-a0a6-c514d779ca05">
+            <Transform>
+                <Position x="-5.516001" y="-1" z="5.032001" />
+                <Rotation x="-4.214685E-08" y="-0.7071066" z="8.79252E-15" w="0.7071069" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>-3.415095E-06</X>
+                    <Y>270</Y>
+                    <Z>3.415094E-06</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-10.064</X>
+                    <Y>3.614431E-07</Y>
+                    <Z>-7.629395E-06</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>3.415096E-05</X>
+                    <Y>270</Y>
+                    <Z>-1.024527E-05</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="c6524336-64b1-423c-a865-714c6d809f19">
+            <Transform>
+                <Position x="5.032001" y="-0.9999998" z="5.516" />
+                <Rotation x="-1.341105E-07" y="8.940697E-08" z="-2.980234E-08" w="1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>-1.536793E-05</X>
+                    <Y>1.024529E-05</Y>
+                    <Z>-3.415098E-06</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-10.048</X>
+                    <Y>-8.416181E-07</Y>
+                    <Z>0.01599943</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>-4.822808E-19</X>
+                    <Y>2.049057E-05</Y>
+                    <Z>2.69711E-12</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="99ed41b2-a875-4cab-839e-653c7098fdf0">
+            <Transform>
+                <Position x="5.532001" y="-0.9999998" z="-5.016" />
+                <Rotation x="-4.003951E-07" y="0.7071069" z="-2.107341E-08" w="0.7071066" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>-3.073585E-05</X>
+                    <Y>90.00002</Y>
+                    <Z>-3.415095E-05</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-10.032</X>
+                    <Y>-6.217957E-06</Y>
+                    <Z>-3.814697E-06</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>1.024531E-05</X>
+                    <Y>90.00002</Y>
+                    <Z>-2.049058E-05</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="f4f44c21-1626-4118-84ff-26a53c5e38d6">
+            <Transform>
+                <Position x="-5.015999" y="-1" z="-5.532001" />
+                <Rotation x="-2.980232E-07" y="1" z="7.450587E-08" w="-2.086162E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>-8.537737E-06</X>
+                    <Y>180</Y>
+                    <Z>-3.415097E-05</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-10.048</X>
+                    <Y>-6.225108E-06</Y>
+                    <Z>-0.01600494</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>3.24434E-05</X>
+                    <Y>180</Y>
+                    <Z>-3.244339E-05</Z>
+                </Vector3>
             </Data>
         </Block>
     </Blocks>
