@@ -74,7 +74,7 @@ I recommend using the starting block as the multicopter core and keeping it at t
 
 If you're in doubt about which side is the front, click the `Translate Machine` button. The blue arrow points to the front.
 
-The following control classes are available.
+Here's a list of configurations available. I did extensive testing and tuning only with the `rotor.XQuad` class, but all of them should be stable in rate and plane modes.
 
 #### `rotor.XQuad`
 
@@ -100,7 +100,24 @@ For tricopters in the Y or T configuration, with yaw servo. WIP.
 
 #### `rotor.Y6`
 
-For hexacopters in the Y configuration. WIP.
+For hexacopters in the Y configuration.
+
+- `motor_l1`: up left, clockwise
+- `motor_r1`: up right, counter-clockwise
+- `motor_b1`: up rear, counter-clockwise
+- `motor_l1`: down left, counter-clockwise
+- `motor_r1`: down right, clockwise
+- `motor_b1`: down rear, clockwise
+
+#### `rotor.Y4`
+
+For hexacopters in the Y configuration.
+
+- `motor_l`: left, clockwise
+- `motor_r`: right, counter-clockwise
+- `motor_bu`: up rear, counter
+- `motor_bd`: down rear, counter-clockwise
+
 
 #### `rotor.BicopterLR`
 
@@ -109,15 +126,6 @@ For bicopters with left/right motor and pitch servos. As of now, they are stable
 - `motor_l`: left, clockwise
 - `motor_r`: right, counter-clockwise
 - `motor_pitch`: pitch steering, clockwise.
-
-#### `rotor.BicopterLR`
-
-For bicopters with left/right motor and pitch servos. As of now, they are stable only in rate and plane mode.
-
-- `motor_l`: left, clockwise
-- `motor_r`: right, counter-clockwise
-- `motor_pitch`: pitch steering, clockwise.
-
 
 
 ### Configuration
