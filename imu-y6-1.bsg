@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Besiege machine save file.-->
+<Machine version="1" bsgVersion="1.3" name="imu-y6-1">
+    <!--The machine's position and rotation.-->
+    <Global>
+        <Position x="5.841255E-05" y="1.522434" z="7.867813E-05" />
+        <Rotation x="0" y="-2.252162E-05" z="0" w="-1" />
+    </Global>
+    <!--The machine's additional data or modded data.-->
+    <Data>
+        <String key="modLoader-machineData">MachineData
+</String>
+        <String key="axis-yaw-type">Controller</String>
+        <String key="axis-yaw-controller">00000003-045e-0000-8e02-000014010000</String>
+        <Integer key="axis-yaw-axis">2</Integer>
+        <Single key="axis-yaw-sensitivity">0.2</Single>
+        <Single key="axis-yaw-curvature">1</Single>
+        <Single key="axis-yaw-deadzone">0.1044521</Single>
+        <Single key="axis-yaw-offsetx">0</Single>
+        <Single key="axis-yaw-offsety">0</Single>
+        <Boolean key="axis-yaw-invert">True</Boolean>
+        <Boolean key="axis-yaw-smooth">False</Boolean>
+        <String key="axis-throttle-type">Chain</String>
+        <String key="axis-throttle-method">Sum</String>
+        <String key="axis-throttle-subaxis1">LT</String>
+        <String key="axis-throttle-subaxis2">RT</String>
+        <String key="axis-RT-type">Controller</String>
+        <String key="axis-RT-controller">00000003-045e-0000-8e02-000014010000</String>
+        <Integer key="axis-RT-axis">5</Integer>
+        <Single key="axis-RT-sensitivity">1</Single>
+        <Single key="axis-RT-curvature">1</Single>
+        <Single key="axis-RT-deadzone">0</Single>
+        <Single key="axis-RT-offsetx">0</Single>
+        <Single key="axis-RT-offsety">0</Single>
+        <Boolean key="axis-RT-invert">False</Boolean>
+        <Boolean key="axis-RT-smooth">False</Boolean>
+        <String key="axis-LT-type">Controller</String>
+        <String key="axis-LT-controller">00000003-045e-0000-8e02-000014010000</String>
+        <Integer key="axis-LT-axis">4</Integer>
+        <Single key="axis-LT-sensitivity">1</Single>
+        <Single key="axis-LT-curvature">1</Single>
+        <Single key="axis-LT-deadzone">0</Single>
+        <Single key="axis-LT-offsetx">0</Single>
+        <Single key="axis-LT-offsety">0</Single>
+        <Boolean key="axis-LT-invert">True</Boolean>
+        <Boolean key="axis-LT-smooth">False</Boolean>
+        <String key="axis-roll-type">Controller</String>
+        <String key="axis-roll-controller">00000003-045e-0000-8e02-000014010000</String>
+        <Integer key="axis-roll-axis">0</Integer>
+        <Single key="axis-roll-sensitivity">0.15</Single>
+        <Single key="axis-roll-curvature">1</Single>
+        <Single key="axis-roll-deadzone">0.1</Single>
+        <Single key="axis-roll-offsetx">0</Single>
+        <Single key="axis-roll-offsety">0</Single>
+        <Boolean key="axis-roll-invert">False</Boolean>
+        <Boolean key="axis-roll-smooth">False</Boolean>
+        <String key="axis-pitch-type">Controller</String>
+        <String key="axis-pitch-controller">00000003-045e-0000-8e02-000014010000</String>
+        <Integer key="axis-pitch-axis">1</Integer>
+        <Single key="axis-pitch-sensitivity">0.15</Single>
+        <Single key="axis-pitch-curvature">1</Single>
+        <Single key="axis-pitch-deadzone">0.1</Single>
+        <Single key="axis-pitch-offsetx">0</Single>
+        <Single key="axis-pitch-offsety">0</Single>
+        <Boolean key="axis-pitch-invert">False</Boolean>
+        <Boolean key="axis-pitch-smooth">False</Boolean>
+        <String key="ac-version">1.5.1.0</String>
+        <StringArray key="ac-axislist">pid_yaw</StringArray>
+        <String key="axis-BR1-type">Chain</String>
+        <String key="axis-BR1-method">Sum</String>
+        <String key="axis-BR1-subaxis1">BR</String>
+        <String key="axis-BR1-subaxis2">yaw</String>
+        <String key="axis-BR-type">Chain</String>
+        <String key="axis-BR-method">Subtract</String>
+        <String key="axis-BR-subaxis1">B</String>
+        <String key="axis-BR-subaxis2">roll</String>
+        <String key="axis-B-type">Chain</String>
+        <String key="axis-B-method">Subtract</String>
+        <String key="axis-B-subaxis1">throttle</String>
+        <String key="axis-B-subaxis2">pitch</String>
+        <String key="axis-BL1-type">Chain</String>
+        <String key="axis-BL1-method">Subtract</String>
+        <String key="axis-BL1-subaxis1">BL</String>
+        <String key="axis-BL1-subaxis2">yaw</String>
+        <String key="axis-BL-type">Chain</String>
+        <String key="axis-BL-method">Sum</String>
+        <String key="axis-BL-subaxis1">B</String>
+        <String key="axis-BL-subaxis2">roll</String>
+        <String key="axis-FL1-type">Chain</String>
+        <String key="axis-FL1-method">Sum</String>
+        <String key="axis-FL1-subaxis1">FL</String>
+        <String key="axis-FL1-subaxis2">yaw</String>
+        <String key="axis-FL-type">Chain</String>
+        <String key="axis-FL-method">Sum</String>
+        <String key="axis-FL-subaxis1">F</String>
+        <String key="axis-FL-subaxis2">roll</String>
+        <String key="axis-F-type">Chain</String>
+        <String key="axis-F-method">Sum</String>
+        <String key="axis-F-subaxis1">throttle</String>
+        <String key="axis-F-subaxis2">pitch</String>
+        <String key="axis-FR1-type">Chain</String>
+        <String key="axis-FR1-method">Subtract</String>
+        <String key="axis-FR1-subaxis1">FR</String>
+        <String key="axis-FR1-subaxis2">yaw</String>
+        <String key="axis-FR-type">Chain</String>
+        <String key="axis-FR-method">Subtract</String>
+        <String key="axis-FR-subaxis1">F</String>
+        <String key="axis-FR-subaxis2">roll</String>
+        <String key="axis-pid_yaw-type">Controller</String>
+        <String key="axis-pid_yaw-controller">00000003-045e-0000-8e02-000014010000</String>
+        <Integer key="axis-pid_yaw-axis">2</Integer>
+        <Single key="axis-pid_yaw-sensitivity">0.5</Single>
+        <Single key="axis-pid_yaw-curvature">1.2</Single>
+        <Single key="axis-pid_yaw-deadzone">0.1</Single>
+        <Single key="axis-pid_yaw-offsetx">0</Single>
+        <Single key="axis-pid_yaw-offsety">0</Single>
+        <Boolean key="axis-pid_yaw-invert">False</Boolean>
+        <Boolean key="axis-pid_yaw-smooth">False</Boolean>
+        <String key="LenchScripterMod-Version">2.2.1.1</String>
+        <String key="LenchScripterMod-Code">
+
+
+
+from bsg.rotor import Y6
+
+
+CONFIG = {
+    # The motor speed at which the vehicle hovers, maintaining current
+    # altitude.
+    'hovering_speed': 1.13,
+
+    # The core block. This isn't necessarily the starting block, but
+    # it should be at or very close to the center of mass and at the
+    # same level as the propellers.
+    'core_block': Besiege.GetBlock('STARTING BLOCK 1'),
+
+    # The core block height relative to the landing legs. If this is
+    # not set, it's assumed to be the initial height
+    'core_height': 2,
+
+    # The minimum radius around the vehicle for the collision
+    # avoidance algorithm. The whole vehicle must fit within the
+    # min_radius.
+    'collision_min_radius': 10,
+    'collision_med_radius': 20,
+    'collision_max_radius': 100,
+
+    # The three motors
+    'motor_l1': [Besiege.GetBlock('SPINNING 1')],
+    'motor_r1': [Besiege.GetBlock('SPINNING 2')],
+    'motor_b1': [Besiege.GetBlock('SPINNING 3')],
+
+    'motor_l2': [Besiege.GetBlock('SPINNING 5')],
+    'motor_r2': [Besiege.GetBlock('SPINNING 6')],
+    'motor_b2': [Besiege.GetBlock('SPINNING 4')],
+
+    # 'motor_fl': [Besiege.GetBlock('SPINNING 1')],
+    # 'motor_fr': [Besiege.GetBlock('SPINNING 2')],
+    # 'motor_bl': [Besiege.GetBlock('SPINNING 4')],
+    # 'motor_br': [Besiege.GetBlock('SPINNING 3')],
+
+    # The Advanced Controls Mod axes used to control the vehicle. All
+    # axes should go from -1 to 1. Make sure to include a reasonable
+    # deadzone if you're using analog sticks.
+    'axis_throttle': AdvancedControls.GetAxis('pid_altitude'),
+    'axis_pitch': AdvancedControls.GetAxis('pid_pitch'),
+    'axis_roll': AdvancedControls.GetAxis('pid_roll'),
+    'axis_yaw': AdvancedControls.GetAxis('pid_yaw'),
+
+    # Keys used to switch between modes and other commands
+    'key_set_rth_mode': [KeyCode.Home],
+    'key_set_land_mode': [KeyCode.End],
+
+    'key_set_brake_mode': [KeyCode.Keypad0],
+    'key_set_rate_mode': [KeyCode.Keypad1],
+    'key_set_stabilize_mode': [KeyCode.Keypad2],
+    'key_set_althold_mode': [KeyCode.Keypad3],
+    'key_set_poshold_mode': [KeyCode.Keypad4],
+    'key_set_hybrid_mode': [KeyCode.Keypad5],
+    'key_set_plane_mode': [KeyCode.Keypad7],
+    'key_set_auto_mode': [KeyCode.Keypad8],
+
+    'key_set_velocity_mode': [KeyCode.Keypad9],
+
+    'key_set_mark': [KeyCode.M],
+    'key_clear_mark': [KeyCode.K],
+
+    # Rate mode PID controller gain values, (Kp, Ki, Kd).
+    'rate_gain_pitch': (0.0266, 0, 0),
+    'rate_gain_yaw': (0.1, 0, 0),
+    'rate_gain_roll': (0.0266, 0, 0),
+
+    # Multiplier applied to the axes values in rate mode. This is the
+    # desired rate in degrees/s when the stick is at the max
+    # position.
+    'rate_cf_pitch': 180,
+    'rate_cf_yaw': 180,
+    'rate_cf_roll': 180,
+
+    # Multiplier applied to the throttle axis in rate mode.
+    'rate_cf_throttle': 5,
+
+    # Stabilize mode PID controller gain values.
+    'stabilize_gain_pitch': (0.0115, 0, 0),
+    'stabilize_gain_yaw': (0.05, 0, 0.002),
+    'stabilize_gain_roll': (0.0115, 0, 0),
+
+    # Multiplier applied to the axes values in stabilize mode. This is
+    # the vehicle angle in the given axis when the stick is at the max
+    # position. There's no setting for yaw because yaw changes in
+    # stabilize mode are handled by rate mode.
+    'stabilize_cf_pitch': 45,
+    'stabilize_cf_roll': 45,
+
+    # This is the max vehicle angle in stabilize mode.
+    'stabilize_max_pitch': 45,
+    'stabilize_max_roll': 45,
+
+    # Velocity mode PID controller values. Velocity was tuned by
+    # adjusting the Kp factor to get velocity to 3/4 of the setpoint,
+    # then adding Kd until it oscillates and cutting it down to 1/3,
+    # and finally by adjusting Ki until the setpoint is achieved
+    # without overshooting.
+
+    #'velocity_gain_x': (0.024, 0.001, 0.002),
+    #'velocity_gain_y': (0.069, 0.033, 0.001),
+    #'velocity_gain_z': (0.024, 0.001, 0.002),
+
+    'velocity_gain_x': (0.024, 0, 0),
+    'velocity_gain_y': (0.069, 0, 0),
+    'velocity_gain_z': (0.024, 0, 0),
+
+    'velocity_cf_x': 40,
+    'velocity_cf_y': 20,
+    'velocity_cf_z': 40,
+
+    # Altitude and Position Hold mode PID gain values. These
+    # gains go through the velocity, stabilize and rate PIDs, so they
+    # should be very small values. Ki is kept at zero to avoid overshooting,
+    # which is undesirable when flying autonomously.
+    'althold_gain': (0.018, 0, 0.01),
+    'poshold_gain_x': (0.0048, 0, 0.00044),
+    'poshold_gain_z': (0.0048, 0, 0.00044),
+
+    # Multiplier applied to the axes in altitude and position hold mode. This is
+    # the desired rate in m/s at which the target position will
+    # change, relative to the vehicle's current orientation.
+    'althold_cf': 50,
+    'poshold_cf_x': 20,
+    'poshold_cf_z': 20,
+
+    # Auto mode PID values.
+    'auto_gain_x': (0.0072, 0, 0.0005),
+    'auto_gain_y': (0.022, 0, 0.01),
+    'auto_gain_z': (0.0072, 0, 0.0005),
+
+    # The closest the vehicle must get to the current waypoint before
+    # going to the next or engaging poshold mode.
+    'auto_radius': 10.0,
+
+    # The mininum altitude the vehicle will climb to before it starts
+    # moving towards the launch horizontal location when in rth mode.
+    'rth_min_y': 30,
+
+    # Plane mode PID gain values. This is the controller used by the
+    # vehicle to zero all lateral velocity by adjusting yaw.
+    'plane_gain': (0.066, 0.01, 0.0033),
+
+    # The minimum forward velocity required by plane mode to adjust
+    # yaw. This avoids having the quad spinning in place when stopped.
+    'plane_min_z': 2,
+
+    # The minimum absolute axis values where switching to rate mode occurs.
+    'hybrid_pitch': 0.9,
+    'hybrid_roll': 0.9,
+
+    # The minimum acceptable relative horizontal velocity for a
+    # vehicle in brake mode. This is the velocity at which poshold
+    # mode is engaged.
+    'brake_velocity': 1,
+}
+
+
+quad = Y6(**CONFIG)
+
+
+def Update():
+    try:
+        quad.update()
+    except Exception as exc:
+        import sys
+        typ, val, tb = sys.exc_info()
+
+        Besiege.Watch('exc', str(typ))
+        Besiege.Watch('msg', val.message[-20:])
+        Besiege.Watch('file', tb.tb_frame.f_code.co_filename.split('/')[-1])
+        Besiege.Watch('line', tb.tb_lineno)
+
+        raise
+</String>
+    </Data>
+    <!--The machine's blocks.-->
+    <Blocks>
+        <Block id="0" guid="f040127e-5d89-4a4a-81cb-a9a49de6e7c6">
+            <Transform>
+                <Position x="0" y="0" z="0" />
+                <Rotation x="0" y="0" z="0" w="1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data />
+        </Block>
+        <Block id="35" guid="188e8506-c40f-4712-8477-37eadfbf9386">
+            <Transform>
+                <Position x="4.516" y="4.768372E-07" z="4.016" />
+                <Rotation x="-0.7071067" y="3.09086E-08" z="-0.7071068" w="1.545431E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-mass">0.5</Single>
+            </Data>
+        </Block>
+        <Block id="35" guid="66db6c3b-d298-46ee-8a4d-34b3a818ceeb">
+            <Transform>
+                <Position x="-4.500001" y="-4.768372E-07" z="4.016" />
+                <Rotation x="0.7071067" y="-3.090861E-08" z="-0.7071068" w="1.545431E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-mass">0.5</Single>
+            </Data>
+        </Block>
+        <Block id="22" guid="12a5fb0e-4a9a-4f7f-a10f-cd289e7654b6">
+            <Transform>
+                <Position x="-5.000001" y="0.4999995" z="4.016" />
+                <Rotation x="-1.755689E-08" y="-0.7071068" z="-0.7071067" w="1.411936E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-speed">1</Single>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="22" guid="e1ff4ce9-95b4-4ee4-9059-7eb151b48892">
+            <Transform>
+                <Position x="5.016" y="0.5000005" z="4.016" />
+                <Rotation x="8.780989E-08" y="-0.7071066" z="-0.7071069" w="3.5825E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-speed">1</Single>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="22" guid="dd87a4fa-5903-4495-8e8f-0dc1fce80a50">
+            <Transform>
+                <Position x="1.311273E-07" y="0.5" z="-5.016" />
+                <Rotation x="-1.236349E-07" y="-0.7071068" z="-0.7071068" w="-6.181654E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-speed">1</Single>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="22" guid="359ccfcb-bb3d-401c-a357-fcaf1535d71e">
+            <Transform>
+                <Position x="-1.311273E-07" y="-0.5" z="-5.016" />
+                <Rotation x="1.236331E-07" y="0.7071068" z="-0.7071068" w="-6.181835E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-speed">1</Single>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="22" guid="9d29c7d7-5d30-48ac-810d-737eda8c3575">
+            <Transform>
+                <Position x="-5.000001" y="-0.5000005" z="4.016" />
+                <Rotation x="-7.937342E-08" y="0.7071066" z="-0.7071069" w="4.425783E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-speed">1</Single>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="22" guid="885dd89d-d782-4eb3-a02f-466e42c99ef4">
+            <Transform>
+                <Position x="5.016" y="-0.4999995" z="4.016" />
+                <Rotation x="2.599336E-08" y="0.7071068" z="-0.7071067" w="1.496246E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-speed">1</Single>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="56a6d10b-bd65-4e4c-bc1b-2d762b73b62c">
+            <Transform>
+                <Position x="-5.500001" y="0.9999995" z="4.015999" />
+                <Rotation x="0.7071066" y="-1.142033E-08" z="-0.7071069" w="1.350556E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="5a88b541-8813-4637-89de-9241225d4004">
+            <Transform>
+                <Position x="-4.500001" y="0.9999995" z="4.016" />
+                <Rotation x="-0.7071068" y="-7.32384E-08" z="-0.7071067" w="5.03969E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="3f18f620-29be-4fbb-9c10-6ba51ab72e04">
+            <Transform>
+                <Position x="4.516" y="1" z="4.016" />
+                <Rotation x="0.7071068" y="1.571695E-07" z="-0.7071068" w="-3.353415E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="c19bd114-b660-4f9b-a741-7167836ae1c8">
+            <Transform>
+                <Position x="5.516" y="1" z="4.016" />
+                <Rotation x="-0.7071067" y="9.535137E-08" z="-0.7071068" w="2.189867E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="34ba8896-be68-4d9f-a3fe-1f2f46efdd17">
+            <Transform>
+                <Position x="0.5000003" y="1" z="-5.016" />
+                <Rotation x="-0.7071068" y="8.130934E-08" z="-0.7071068" w="-1.041417E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="3ab2b457-864b-4439-b1bb-9f34a88ca30a">
+            <Transform>
+                <Position x="-0.4999997" y="1" z="-5.016" />
+                <Rotation x="0.7071067" y="-1.659589E-07" z="-0.7071068" w="-1.94921E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="f861af85-02fe-4e82-98a5-8a18e171f715">
+            <Transform>
+                <Position x="-0.5000002" y="-1" z="-5.016" />
+                <Rotation x="0.7071068" y="-8.13072E-08" z="-0.7071068" w="-1.041451E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="acc8076f-5236-4352-9188-9e5c0176e34f">
+            <Transform>
+                <Position x="0.4999997" y="-1" z="-5.016" />
+                <Rotation x="-0.7071067" y="1.659623E-07" z="-0.7071068" w="-1.948995E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="5f25a71d-a1eb-4a26-840a-b122e0395e78">
+            <Transform>
+                <Position x="-5.500001" y="-1" z="4.015999" />
+                <Rotation x="0.7071068" y="-9.535512E-08" z="-0.7071068" w="2.189866E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="e50d4a94-f9e5-401a-88bb-35b55970f9b0">
+            <Transform>
+                <Position x="-4.500001" y="-1" z="4.016" />
+                <Rotation x="-0.7071068" y="-1.571693E-07" z="-0.7071068" w="-3.353787E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="e13e85c7-7525-41b1-8933-eb3ba92bfd90">
+            <Transform>
+                <Position x="5.516" y="-0.9999995" z="4.016" />
+                <Rotation x="-0.7071067" y="1.141507E-08" z="-0.7071068" w="1.350478E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="8f7949ac-90fa-425b-8a08-c2a7d27258ca">
+            <Transform>
+                <Position x="4.516" y="-0.9999995" z="4.016" />
+                <Rotation x="0.7071068" y="7.323056E-08" z="-0.7071067" w="5.040216E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="58" guid="4057ad04-6534-4f97-a4db-5b03f981f9b5">
+            <Transform>
+                <Position x="0" y="0.5" z="0" />
+                <Rotation x="-0.7071068" y="6.181654E-08" z="6.181654E-08" w="0.7071068" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <StringArray key="bmt-activate">F</StringArray>
+                <Integer key="bmt-mode">0</Integer>
+                <Boolean key="bmt-advanced-options">False</Boolean>
+                <Single key="bmt-distance">32</Single>
+                <Single key="bmt-height">18</Single>
+                <Single key="bmt-rotation">0</Single>
+                <Single key="bmt-pitch">0</Single>
+                <Single key="bmt-roll">0</Single>
+                <Single key="bmt-yaw">0</Single>
+                <Single key="bmt-smooth">0.75</Single>
+                <Single key="bmt-fov">41</Single>
+            </Data>
+        </Block>
+        <Block id="7" guid="411b2ec1-628e-4f63-a67e-2695c52e590b">
+            <Transform>
+                <Position x="5.015999" y="0" z="4.516" />
+                <Rotation x="1.311342E-07" y="-1.102708E-07" z="1.748456E-07" w="1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>1.502687E-05</X>
+                    <Y>0.002568151</Y>
+                    <Z>2.003583E-05</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-10.016</X>
+                    <Y>3.02567E-06</Y>
+                    <Z>1.732107E-06</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>-1.502687E-05</X>
+                    <Y>0.002592057</Y>
+                    <Z>2.003583E-05</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="2a2e23d8-5380-43a3-b264-8d5e481f85c7">
+            <Transform>
+                <Position x="-1.102708E-07" y="0" z="0.5" />
+                <Rotation x="0" y="0" z="8.742278E-08" w="1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>0</X>
+                    <Y>0.002580788</Y>
+                    <Z>1.001791E-05</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-4.500001</X>
+                    <Y>3.09968E-07</Y>
+                    <Z>3.516</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>-1.001791E-05</X>
+                    <Y>90.00259</Y>
+                    <Z>-5.008957E-06</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="8f4fc6ad-619b-4dd1-920e-539994c54f98">
+            <Transform>
+                <Position x="4.516" y="4.768372E-07" z="4.016" />
+                <Rotation x="9.272588E-08" y="-0.7071068" z="3.090863E-08" w="0.7071068" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>1.001792E-05</X>
+                    <Y>270.0026</Y>
+                    <Z>-5.008957E-06</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-3.516003</X>
+                    <Y>5.387392E-09</Y>
+                    <Z>4.516004</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>0</X>
+                    <Y>0.002580788</Y>
+                    <Z>1.001791E-05</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="35" guid="70bfe918-b973-46bd-a754-e02f84c0c039">
+            <Transform>
+                <Position x="0" y="0" z="-4.516" />
+                <Rotation x="2.622683E-07" y="1" z="-4.336809E-19" w="0" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Single key="bmt-mass">0.5</Single>
+            </Data>
+        </Block>
+        <Block id="7" guid="1cdf0607-07ca-4594-abad-4b8d2d5e6adc">
+            <Transform>
+                <Position x="-5.000002" y="-9.536743E-07" z="3.516" />
+                <Rotation x="-3.092535E-14" y="1" z="-1.311342E-07" w="-9.834548E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>1.502687E-05</X>
+                    <Y>180.0026</Y>
+                    <Z>-2.065944E-12</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-4.500004</X>
+                    <Y>3.191348E-06</Y>
+                    <Z>8.531999</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>-3.005374E-05</X>
+                    <Y>270.0026</Y>
+                    <Z>1.001791E-05</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="53422c8d-9757-4cbb-b6da-e3b011601392">
+            <Transform>
+                <Position x="0.4999999" y="0" z="-5.016" />
+                <Rotation x="2.47269E-07" y="0.7071068" z="-1.236345E-07" w="0.7071068" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>3.005374E-05</X>
+                    <Y>90.00258</Y>
+                    <Z>1.001791E-05</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-8.532007</X>
+                    <Y>4.814269E-06</Y>
+                    <Z>4.516005</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>-1.502687E-05</X>
+                    <Y>180.0026</Y>
+                    <Z>-1.791373E-12</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="7" guid="97288eb4-44c8-4a27-a2a5-a950c202abcd">
+            <Transform>
+                <Position x="0" y="0" z="-4.516" />
+                <Rotation x="-4.336809E-19" y="0" z="-1.748455E-07" w="1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Vector3 key="start-position">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Z>0</Z>
+                </Vector3>
+                <Vector3 key="start-rotation">
+                    <X>-4.969617E-17</X>
+                    <Y>0.002580788</Y>
+                    <Z>-2.003582E-05</Z>
+                </Vector3>
+                <Vector3 key="end-position">
+                    <X>-3.637979E-12</X>
+                    <Y>-4.755493E-18</Y>
+                    <Z>4.016</Z>
+                </Vector3>
+                <Vector3 key="end-rotation">
+                    <X>0</X>
+                    <Y>180.0026</Y>
+                    <Z>1.001791E-05</Z>
+                </Vector3>
+            </Data>
+        </Block>
+        <Block id="55" guid="ac897ba1-b202-4466-9a24-1d8ee2917bc8">
+            <Transform>
+                <Position x="2.185407E-07" y="1" z="-5.516" />
+                <Rotation x="-1.311373E-07" y="-1" z="5.960464E-08" w="4.371395E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="fea7a9de-a37e-496d-a580-cb420f65997b">
+            <Transform>
+                <Position x="-2.185698E-07" y="-0.9999999" z="-5.516" />
+                <Rotation x="-1.31131E-07" y="-1" z="-5.960464E-08" w="-4.37085E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="9afd5372-ae03-40f1-8732-6c7d4fed3c99">
+            <Transform>
+                <Position x="-3.05954E-07" y="-1" z="-4.516" />
+                <Rotation x="-5.960464E-08" y="4.37085E-08" z="1.31131E-07" w="-1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="f24196f6-e144-4e1b-80e7-71a9a906d5c7">
+            <Transform>
+                <Position x="3.059686E-07" y="1" z="-4.516" />
+                <Rotation x="5.960464E-08" y="-4.371395E-08" z="1.311373E-07" w="-1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="a53a9a52-9f64-4291-938a-6fac94fff55e">
+            <Transform>
+                <Position x="-5.000001" y="0.9999995" z="4.516" />
+                <Rotation x="5.960464E-08" y="-1.122553E-07" z="-8.742612E-08" w="-1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="3cc29008-ebed-4efa-b593-2d262cf4de14">
+            <Transform>
+                <Position x="-5.000001" y="0.9999995" z="3.516" />
+                <Rotation x="8.742612E-08" y="-1" z="5.960464E-08" w="1.122553E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="9c146064-1f68-4f8f-b41a-8d805d4b8fe6">
+            <Transform>
+                <Position x="5.015999" y="1" z="4.516" />
+                <Rotation x="-1.788139E-07" y="3.675814E-08" z="-8.74223E-08" w="-1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="d4de9614-ee36-403f-940f-d52b701e9d14">
+            <Transform>
+                <Position x="5.016" y="1.000001" z="3.516" />
+                <Rotation x="8.74223E-08" y="-1" z="-1.788139E-07" w="-3.675814E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="97dc147a-a519-4334-ba2b-02650d96376c">
+            <Transform>
+                <Position x="5.016" y="-0.9999995" z="3.516" />
+                <Rotation x="8.741878E-08" y="-1" z="-5.960464E-08" w="-1.241806E-07" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="17abcc90-e1de-40b7-bce5-9e7ca8361114">
+            <Transform>
+                <Position x="5.015999" y="-0.9999996" z="4.516" />
+                <Rotation x="-5.960464E-08" y="1.241806E-07" z="-8.741878E-08" w="-1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">False</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="1040233b-9e0f-4a0d-b86f-10f3383a00e6">
+            <Transform>
+                <Position x="-5.000001" y="-1" z="4.516" />
+                <Rotation x="1.788139E-07" y="-2.483284E-08" z="-8.742077E-08" w="-1" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+        <Block id="55" guid="99e21dd6-7502-4998-9b90-2cdf7f6fb407">
+            <Transform>
+                <Position x="-5.000001" y="-1.000001" z="3.516" />
+                <Rotation x="8.742077E-08" y="-1" z="1.788139E-07" w="2.483284E-08" />
+                <Scale x="1" y="1" z="1" />
+            </Transform>
+            <Settings>
+                <Skin name="default" id="default" />
+            </Settings>
+            <Data>
+                <Boolean key="flipped">True</Boolean>
+            </Data>
+        </Block>
+    </Blocks>
+</Machine>

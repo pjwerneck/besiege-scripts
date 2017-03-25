@@ -813,6 +813,28 @@ class Y6(BaseRotor):
                 m.SetSliderValue('SPEED', v)
 
 
+class Y4(BaseRotor):
+
+    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        hover = self.hover
+
+        power = {
+            'motor_l': hover + hover * (throttle_adj - pitch_adj - roll_adj),
+            'motor_r': hover + hover * (throttle_adj - pitch_adj + roll_adj),
+            'motor_bu': hover + hover * (throttle_adj + pitch_adj - yaw_adj),
+            'motor_bd': hover + hover * (throttle_adj + pitch_adj + yaw_adj),
+            }
+
+        Besiege.Watch('power', pretty(power.values()))
+
+        for k, v in power.items():
+            v = pid.clip(v, -12, 12)
+            for m in self.motors[k]:
+                m.SetSliderValue('SPEED', v)
+
+        Besiege.Watch('avg_power', sum(power.values()) / len(power))
+
+
 class Tricopter(BaseRotor):
 
     def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
