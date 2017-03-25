@@ -112,14 +112,14 @@ class BaseRotor(object):
 
         self.waypoints = []
 
-        self.waypoints = [
-            Waypoint(Vector3(-252.1, 76, 78.4)),
-            Waypoint(Vector3(-353.5, 123.4, 405.6)),
-            Waypoint(Vector3(17, 181, -7)),
-            Waypoint(Vector3(311, 181, 294)),
-            Waypoint(Vector3(176.9, 243.2, 314.7)),
-            Waypoint(Vector3(0, 2, 0)),
-            ]
+        #self.waypoints = [
+        #    Waypoint(Vector3(-252.1, 76, 78.4)),
+        #    Waypoint(Vector3(-353.5, 123.4, 405.6)),
+        #    Waypoint(Vector3(17, 181, -7)),
+        #    Waypoint(Vector3(311, 181, 294)),
+        #    Waypoint(Vector3(176.9, 243.2, 314.7)),
+        #    Waypoint(Vector3(0, 2, 0)),
+        #    ]
 
         self.current_waypoint = None
         self.config = config
