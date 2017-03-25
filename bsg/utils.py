@@ -27,3 +27,7 @@ def clear_marks():
             obj.DestroyImmediate(obj)
         except Exception:
             break
+
+
+def pretty(seq):
+    return '(' + ', '.join('%0.2f' % x for x in seq) + ')'

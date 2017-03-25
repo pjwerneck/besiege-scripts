@@ -20,6 +20,7 @@ from Lench.Scripter import Functions as Besiege
 from . import pid
 from .utils import mm
 from .utils import clear_marks
+from .utils import pretty
 
 
 class Waypoint(object):
@@ -182,8 +183,10 @@ class BaseRotor(object):
         Besiege.Watch('dt', self.dt)
         Besiege.Watch('mode', self.mode[-1].__name__)
 
-        # using Vector4 merely for the nice string repr
-        Besiege.Watch('controls', Vector4(*self.controls))
+        Besiege.Watch('controls', pretty(self.controls))
+
+        Besiege.Watch('rate', self.rate)
+        Besiege.Watch('rate_sp', self.rate_sp)
 
         Besiege.Watch('rotation', self.rotation)
         Besiege.Watch('rotation_sp', self.rotation_sp)
@@ -192,9 +195,6 @@ class BaseRotor(object):
         Besiege.Watch('position_sp', self.position_sp)
         Besiege.Watch('position_sp_local', self.position_sp_local)
         Besiege.Watch('position_sp_distance', self.position_sp_distance)
-
-        Besiege.Watch('rate', self.rate)
-        Besiege.Watch('rate_sp', self.rate_sp)
 
         Besiege.Watch('velocity', self.velocity)
         Besiege.Watch('velocity_sp', self.velocity_sp)
@@ -756,7 +756,7 @@ class XQuad(BaseRotor):
             'motor_br': hover + hover * (throttle_adj + pitch_adj + roll_adj - yaw_adj),
             }
 
-        Besiege.Watch('power', Vector4(*power.values()))
+        Besiege.Watch('power', pretty(power.values()))
         Besiege.Watch('avg_power', sum(power.values()) / 4)
 
         for k, v in power.items():
@@ -821,16 +821,39 @@ class Tricopter(BaseRotor):
         power = {
             'motor_l': hover + hover * (throttle_adj - pitch_adj - roll_adj),
             'motor_r': hover + hover * (throttle_adj - pitch_adj + roll_adj),
-            'motor_b': hover + hover * (throttle_adj + pitch_adj),
+            'motor_b': hover + hover * (pitch_adj),
             }
 
-        Besiege.Watch('power', Vector4(*power.values()))
+        Besiege.Watch('power', pretty(power.values()))
 
         for k, v in power.items():
             v = pid.clip(v, -12, 12)
             for m in self.motors[k]:
                 m.SetSliderValue('SPEED', v)
 
+        yaw_adj = pid.clip(yaw_adj, -15, 15)
+
         Besiege.Watch('yaw_adj', yaw_adj)
 
         self.motors['motor_yaw_servo'][0].SetAngle(yaw_adj)
+
+
+class BicopterLR(BaseRotor):
+
+    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        hover = self.hover
+
+        power = {
+            'motor_l': hover + hover * (throttle_adj - roll_adj),
+            'motor_r': hover + hover * (throttle_adj + roll_adj),
+            }
+
+        Besiege.Watch('power', pretty(power.values()))
+
+        for k, v in power.items():
+            v = pid.clip(v, -12, 12)
+            for m in self.motors[k]:
+                m.SetSliderValue('SPEED', v)
+
+        self.motors['motor_pitch'][0].SetAngle(pitch_adj + yaw_adj)
+        self.motors['motor_pitch'][1].SetAngle(pitch_adj - yaw_adj)

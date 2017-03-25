@@ -102,6 +102,24 @@ For tricopters in the Y or T configuration, with yaw servo. WIP.
 
 For hexacopters in the Y configuration. WIP.
 
+#### `rotor.BicopterLR`
+
+For bicopters with left/right motor and pitch servos. As of now, they are stable only in rate and plane mode.
+
+- `motor_l`: left, clockwise
+- `motor_r`: right, counter-clockwise
+- `motor_pitch`: pitch steering, clockwise.
+
+#### `rotor.BicopterLR`
+
+For bicopters with left/right motor and pitch servos. As of now, they are stable only in rate and plane mode.
+
+- `motor_l`: left, clockwise
+- `motor_r`: right, counter-clockwise
+- `motor_pitch`: pitch steering, clockwise.
+
+
+
 ### Configuration
 
 There are many configuration parameters. The script files has detailed descriptions for each one.
@@ -110,7 +128,7 @@ There are many configuration parameters. The script files has detailed descripti
 
 If you never tuned a multicopter, I have bad news for you: it's the most boring and annoying part.
 
-If you fly multicopters and tuned a lot of them, I have good news for you: because there are no wind or pressure disturbances, no sensor noise, and the propellers have a lot of drag, you can fly well by tuning just the Kp parameters. Tuning Kd might give you a more locked-in feeling, but in most flight modes Ki isn't necessary and will add overshoot, which is undesirable
+If you fly multicopters and tuned a lot of them, I have good news for you: because there are no wind or pressure disturbances and no sensor noise, you can fly well after tuning only the Kp parameters. Tuning Kd might give you a more locked-in feeling, but in most flight modes Ki isn't necessary and will add overshoot, which is undesirable. 
 
 Since the flight modes are just a series of cascaded PID controllers, you should tune them in the following order:
 
