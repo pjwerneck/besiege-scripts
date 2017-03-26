@@ -35,18 +35,13 @@ CONFIG = {
     'motor_r2': [Besiege.GetBlock('SPINNING 6')],
     'motor_b2': [Besiege.GetBlock('SPINNING 4')],
 
-    # 'motor_fl': [Besiege.GetBlock('SPINNING 1')],
-    # 'motor_fr': [Besiege.GetBlock('SPINNING 2')],
-    # 'motor_bl': [Besiege.GetBlock('SPINNING 4')],
-    # 'motor_br': [Besiege.GetBlock('SPINNING 3')],
-
     # The Advanced Controls Mod axes used to control the vehicle. All
     # axes should go from -1 to 1. Make sure to include a reasonable
     # deadzone if you're using analog sticks.
-    'axis_throttle': AdvancedControls.GetAxis('pid_altitude'),
-    'axis_pitch': AdvancedControls.GetAxis('pid_pitch'),
-    'axis_roll': AdvancedControls.GetAxis('pid_roll'),
-    'axis_yaw': AdvancedControls.GetAxis('pid_yaw'),
+    'axis_throttle': AdvancedControls.GetAxis('rotor-throttle'),
+    'axis_pitch': AdvancedControls.GetAxis('rotor-pitch'),
+    'axis_roll': AdvancedControls.GetAxis('rotor-roll'),
+    'axis_yaw': AdvancedControls.GetAxis('rotor-yaw'),
 
     # Keys used to switch between modes and other commands
     'key_set_rth_mode': [KeyCode.Home],
@@ -102,10 +97,6 @@ CONFIG = {
     # then adding Kd until it oscillates and cutting it down to 1/3,
     # and finally by adjusting Ki until the setpoint is achieved
     # without overshooting.
-
-    #'velocity_gain_x': (0.024, 0.001, 0.002),
-    #'velocity_gain_y': (0.069, 0.033, 0.001),
-    #'velocity_gain_z': (0.024, 0.001, 0.002),
 
     'velocity_gain_x': (0.024, 0, 0),
     'velocity_gain_y': (0.069, 0, 0),

@@ -29,10 +29,10 @@ CONFIG = {
     # The Advanced Controls Mod axes used to control the vehicle. All
     # axes should go from -1 to 1. Make sure to include a reasonable
     # deadzone if you're using analog sticks.
-    'axis_throttle': AdvancedControls.GetAxis('pid_altitude'),
-    'axis_pitch': AdvancedControls.GetAxis('pid_pitch'),
-    'axis_roll': AdvancedControls.GetAxis('pid_roll'),
-    'axis_yaw': AdvancedControls.GetAxis('pid_yaw'),
+    'axis_throttle': AdvancedControls.GetAxis('rotor-throttle'),
+    'axis_pitch': AdvancedControls.GetAxis('rotor-pitch'),
+    'axis_roll': AdvancedControls.GetAxis('rotor-roll'),
+    'axis_yaw': AdvancedControls.GetAxis('rotor-yaw'),
 
     # Keys used to switch between modes and other commands
     'key_set_rth_mode': [KeyCode.Home],
@@ -45,7 +45,7 @@ CONFIG = {
     'key_set_poshold_mode': [KeyCode.Keypad4],
     'key_set_hybrid_mode': [KeyCode.Keypad5],
     'key_set_velocity_mode': [KeyCode.Keypad6],
-    'key_set_plane_mode': [KeyCode.Keypad7],
+    'key_set_plane_mode': [KeyCode.Keypad7, KeyCode.JoystickButton0],
     'key_set_auto_mode': [KeyCode.Keypad8],
 
     #'key_set_panic_brake_mode': [KeyCode.Keypad9],
