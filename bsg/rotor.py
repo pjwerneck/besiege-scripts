@@ -927,3 +927,51 @@ class Dualcopter(BaseRotor):
 
         for m in self.motors['motor_roll']:
             m.SetAngle(pid.clip(roll_adj, -15, 15))
+
+
+class Helicopter(BaseRotor):
+
+    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        hover = self.hover
+
+        power = {
+            'motor_u': hover + hover * throttle_adj,
+            'motor_t': yaw_adj + hover,
+            }
+
+        Besiege.Watch('power', pretty(power.values()))
+
+        for k, v in power.items():
+            v = pid.clip(v, -12, 12)
+            for m in self.motors[k]:
+                m.SetSliderValue('SPEED', v)
+
+        Besiege.Watch('avg_power', sum(power.values()) / len(power))
+
+        for m in self.motors['motor_pitch']:
+            m.SetAngle(pid.clip(pitch_adj, -15, 15))
+
+        for m in self.motors['motor_roll']:
+            m.SetAngle(pid.clip(roll_adj, -15, 15))
+
+
+class HexaX(BaseRotor):
+    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        hover = self.hover
+
+        power = {
+            'motor_1': hover + hover * (throttle_adj + roll_adj - yaw_adj),
+            'motor_2': hover + hover * (throttle_adj - roll_adj + yaw_adj),
+            'motor_3': hover + hover * (throttle_adj - roll_adj - yaw_adj - pitch_adj),
+            'motor_4': hover + hover * (throttle_adj + roll_adj + yaw_adj + pitch_adj),
+            'motor_5': hover + hover * (throttle_adj + roll_adj + yaw_adj - pitch_adj),
+            'motor_6': hover + hover * (throttle_adj - roll_adj - yaw_adj + pitch_adj),
+            }
+
+        Besiege.Watch('power', pretty(power.values()))
+        Besiege.Watch('avg_power', sum(power.values()) / len(power))
+
+        for k, v in power.items():
+            v = pid.clip(v, -12, 12)
+            for m in self.motors[k]:
+                m.SetSliderValue('SPEED', v)
