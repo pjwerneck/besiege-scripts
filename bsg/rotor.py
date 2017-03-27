@@ -901,3 +901,29 @@ class T4(BaseRotor):
                 m.SetSliderValue('SPEED', v)
 
         Besiege.Watch('avg_power', sum(power.values()) / len(power))
+
+
+class Dualcopter(BaseRotor):
+
+    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        hover = self.hover
+
+        power = {
+            'motor_u': hover + hover * (throttle_adj - yaw_adj),
+            'motor_d': hover + hover * (throttle_adj + yaw_adj),
+            }
+
+        Besiege.Watch('power', pretty(power.values()))
+
+        for k, v in power.items():
+            v = pid.clip(v, -12, 12)
+            for m in self.motors[k]:
+                m.SetSliderValue('SPEED', v)
+
+        Besiege.Watch('avg_power', sum(power.values()) / len(power))
+
+        for m in self.motors['motor_pitch']:
+            m.SetAngle(pid.clip(pitch_adj, -15, 15))
+
+        for m in self.motors['motor_roll']:
+            m.SetAngle(pid.clip(roll_adj, -15, 15))

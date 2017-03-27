@@ -3,7 +3,7 @@
 <Machine version="1" bsgVersion="1.3" name="imu-bicopterlr1">
     <!--The machine's position and rotation.-->
     <Global>
-        <Position x="0" y="3.968946" z="1.192093E-07" />
+        <Position x="0" y="3.968946" z="2.062853" />
         <Rotation x="0" y="0" z="0" w="1" />
     </Global>
     <!--The machine's additional data or modded data.-->
@@ -373,9 +373,9 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>0</X>
+                    <X>-8.940697E-08</X>
                     <Y>0</Y>
-                    <Z>0</Z>
+                    <Z>1.421085E-14</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>0</X>
@@ -383,9 +383,9 @@ def Update():
                     <Z>0</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>2.384186E-07</X>
+                    <X>1.490116E-07</X>
                     <Y>0</Y>
-                    <Z>1.999998</Z>
+                    <Z>1.999997</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
                     <X>0</X>
@@ -405,9 +405,9 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>0</X>
+                    <X>8.940697E-08</X>
                     <Y>0</Y>
-                    <Z>0</Z>
+                    <Z>1.421085E-14</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>0</X>
@@ -415,9 +415,9 @@ def Update():
                     <Z>0</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>-2.384186E-07</X>
+                    <X>-1.490116E-07</X>
                     <Y>0</Y>
-                    <Z>1.999998</Z>
+                    <Z>1.999997</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
                     <X>0</X>
@@ -577,19 +577,19 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
+                    <X>-7.816207E-15</X>
+                    <Y>8.940697E-08</Y>
+                    <Z>1.421085E-14</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>270.0198</X>
-                    <Y>-5.008956E-06</Y>
+                    <Y>-5.008957E-06</Y>
                     <Z>0</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>1.352336E-13</X>
-                    <Y>-4.768372E-07</Y>
-                    <Z>1.999998</Z>
+                    <X>1.425743E-13</X>
+                    <Y>-3.576279E-07</Y>
+                    <Z>1.999997</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
                     <X>90</X>
@@ -667,9 +667,9 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>-5.639439E-23</X>
-                    <Y>1.421086E-14</Y>
-                    <Z>-1.694066E-21</Z>
+                    <X>2.365352E-16</X>
+                    <Y>-5.960465E-08</Y>
+                    <Z>7.105427E-15</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>90</X>
@@ -679,7 +679,7 @@ def Update():
                 <Vector3 key="end-position">
                     <X>1.000001</X>
                     <Y>-7.152557E-07</Y>
-                    <Z>2.000007</Z>
+                    <Z>2.000008</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
                     <X>270</X>
@@ -699,9 +699,9 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
+                    <X>-2.107974E-14</X>
+                    <Y>-5.960464E-08</Y>
+                    <Z>7.105427E-15</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>90</X>
@@ -711,7 +711,7 @@ def Update():
                 <Vector3 key="end-position">
                     <X>-1.000001</X>
                     <Y>1.430511E-06</Y>
-                    <Z>2.000007</Z>
+                    <Z>2.000008</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
                     <X>270</X>
@@ -731,9 +731,9 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
+                    <X>-4.172716E-08</X>
+                    <Y>-7.130222E-15</Y>
+                    <Z>2.131628E-14</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>2.442666E-12</X>
@@ -741,8 +741,8 @@ def Update():
                     <Z>-9.790542E-06</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>1.192093E-07</X>
-                    <Y>7.057164E-14</Y>
+                    <X>1.966914E-07</X>
+                    <Y>8.381157E-14</Y>
                     <Z>1.999999</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
@@ -763,9 +763,9 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
+                    <X>-1.787748E-08</X>
+                    <Y>6.322541E-15</Y>
+                    <Z>1.776357E-15</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>2.442666E-12</X>
@@ -773,12 +773,12 @@ def Update():
                     <Z>2.026319E-05</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>2.842171E-14</X>
-                    <Y>2.747567E-14</Y>
-                    <Z>1.999996</Z>
+                    <X>-1.787745E-08</X>
+                    <Y>3.379823E-14</Y>
+                    <Z>1.999995</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
-                    <X>-3.256888E-12</X>
+                    <X>-1.628444E-12</X>
                     <Y>89.99999</Y>
                     <Z>-3.028109E-05</Z>
                 </Vector3>
@@ -884,8 +884,8 @@ def Update():
                 </Vector3>
                 <Vector3 key="end-position">
                     <X>2.147453E-06</X>
-                    <Y>1.532006</Y>
-                    <Z>1.500006</Z>
+                    <Y>1.532007</Y>
+                    <Z>1.500007</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
                     <X>1.366037E-05</X>
@@ -910,14 +910,14 @@ def Update():
                     <Z>0</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
-                    <X>-5.008962E-05</X>
+                    <X>-5.008963E-05</X>
                     <Y>270</Y>
                     <Z>2.026319E-05</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>4.50001</X>
+                    <X>4.500011</X>
                     <Y>-1.000004</Y>
-                    <Z>2.500006</Z>
+                    <Z>2.500007</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
                     <X>4.029902E-05</X>
@@ -947,13 +947,13 @@ def Update():
                     <Z>1.001791E-05</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>-4.371157E-07</X>
+                    <X>-4.371159E-07</X>
                     <Y>1</Y>
                     <Z>4</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
                     <X>-1.024528E-05</X>
-                    <Y>-5.008965E-06</Y>
+                    <Y>-5.008967E-06</Y>
                     <Z>-4.007165E-05</Z>
                 </Vector3>
             </Data>
@@ -1002,9 +1002,9 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
+                    <X>4.263258E-14</X>
+                    <Y>4.121334E-14</Y>
+                    <Z>1.192093E-07</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>1.980845E-05</X>
@@ -1025,7 +1025,7 @@ def Update():
         </Block>
         <Block id="7" guid="076fb6d7-2c11-4477-bd66-4a222f069c89">
             <Transform>
-                <Position x="-1.311342E-07" y="-3.000001" z="0.5000002" />
+                <Position x="-1.311342E-07" y="-3.000001" z="0.5000001" />
                 <Rotation x="5.960467E-08" y="1.311342E-07" z="-8.742279E-08" w="-1" />
                 <Scale x="1" y="1" z="1" />
             </Transform>
@@ -1034,9 +1034,9 @@ def Update():
             </Settings>
             <Data>
                 <Vector3 key="start-position">
-                    <X>0</X>
-                    <Y>0</Y>
-                    <Z>0</Z>
+                    <X>-3.126483E-14</X>
+                    <Y>1.421086E-14</Y>
+                    <Z>-1.192093E-07</Z>
                 </Vector3>
                 <Vector3 key="start-rotation">
                     <X>-6.830191E-06</X>
@@ -1044,7 +1044,7 @@ def Update():
                     <Z>1.001791E-05</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>2.273737E-13</X>
+                    <X>3.410605E-13</X>
                     <Y>-4.768373E-07</Y>
                     <Z>4</Z>
                 </Vector3>
@@ -1076,8 +1076,8 @@ def Update():
                     <Z>2.686599E-05</Z>
                 </Vector3>
                 <Vector3 key="end-position">
-                    <X>-4.499989</X>
-                    <Y>5.328737E-06</Y>
+                    <X>-4.499987</X>
+                    <Y>5.328736E-06</Y>
                     <Z>1.499999</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
@@ -1244,7 +1244,7 @@ def Update():
                 </Vector3>
                 <Vector3 key="end-position">
                     <X>-0.9999999</X>
-                    <Y>-5.562837E-07</Y>
+                    <Y>-5.562836E-07</Y>
                     <Z>4.768374E-07</Z>
                 </Vector3>
                 <Vector3 key="end-rotation">
