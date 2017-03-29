@@ -1,26 +1,171 @@
 
+import math
 
 import clr
-
-clr.AddReference("System")
-clr.AddReference("UnityEngine")
-
+from Lench.AdvancedControls import AdvancedControls
+from Lench.Scripter import Functions as Besiege
+from UnityEngine import Color
 from UnityEngine import Input
+from UnityEngine import KeyCode
 from UnityEngine import Physics
 from UnityEngine import Quaternion
 from UnityEngine import Time
 from UnityEngine import Vector2
 from UnityEngine import Vector3
-from UnityEngine import Vector4
-from UnityEngine import Color
-
-clr.AddReference("LenchScripterMod")
-from Lench.Scripter import Functions as Besiege
 
 from . import pid
-from .utils import mm
 from .utils import clear_marks
+from .utils import mm
 from .utils import pretty
+
+
+clr.AddReference("System")
+clr.AddReference("UnityEngine")
+clr.AddReference('AdvancedControlsMod')
+clr.AddReference("LenchScripterMod")
+
+
+CONFIG_DEFAULTS = dict(
+    # The motor speed at which the vehicle hovers, maintaining current
+    # altitude.
+    hovering_speed=1,
+
+    # The core block. This isn't necessarily the starting block, but
+    # it should be at or very close to the center of mass and at the
+    # same level as the propellers.
+    core_block='STARTING BLOCK 1',
+
+    # The core block height relative to the landing legs. If this is
+    # not set, it's assumed to be the initial height
+    core_height=2,
+
+    axes={
+        'throttle': 'rotor-throttle',
+        'pitch': 'rotor-pitch',
+        'roll': 'rotor-roll',
+        'yaw': 'rotor-yaw',
+        },
+
+    # Keys used to switch between modes and other commands
+    key_set_rth_mode=[KeyCode.Home],
+    key_set_land_mode=[KeyCode.End],
+    key_set_brake_mode=[KeyCode.Keypad0],
+    key_set_rate_mode=[KeyCode.Keypad1],
+    key_set_stabilize_mode=[KeyCode.Keypad2],
+    key_set_althold_mode=[KeyCode.Keypad3],
+    key_set_poshold_mode=[KeyCode.Keypad4],
+    key_set_hybrid_mode=[KeyCode.Keypad5],
+    key_set_velocity_mode=[KeyCode.Keypad6],
+    key_set_auto_mode=[KeyCode.Keypad8],
+
+    key_set_yaw_lock=[KeyCode.KeypadDivide],
+    key_set_yaw_heading=[KeyCode.KeypadMultiply],
+    key_set_yaw_null=[KeyCode.KeypadMinus],
+
+    key_add_waypoint=[KeyCode.Insert],
+    key_delete_last_waypoint=[KeyCode.Delete],
+
+    # Multiplier applied to the axes values in rate mode. This is the
+    # desired rate in degrees/s when the stick is at the max
+    # position.
+    rate_cf_pitch=180,
+    rate_cf_yaw=180,
+    rate_cf_roll=180,
+
+    # Multiplier applied to the throttle axis in rate mode.
+    rate_cf_throttle=6,
+
+    # Multiplier applied to the axes values in stabilize mode. This is
+    # the vehicle angle in the given axis when the stick is at the max
+    # position. There's no setting for yaw because yaw changes in
+    # stabilize mode are handled by rate mode.
+    stabilize_cf_pitch=45,
+    stabilize_cf_roll=45,
+
+    # This is the max vehicle angle in stabilize mode.
+    stabilize_max_pitch=45,
+    stabilize_max_roll=45,
+
+    # Multiplier added to the axes values in velocity mode.
+    velocity_cf_x=80,
+    velocity_cf_y=40,
+    velocity_cf_z=80,
+
+    # Multiplier applied to the axes in altitude and position hold mode. This is
+    # the desired rate in m/s at which the target position will
+    # change, relative to the vehicle's current orientation.
+    althold_cf=50,
+    poshold_cf_x=50,
+    poshold_cf_z=50,
+
+    # How close close the vehicle must get to the current waypoint
+    # before going to the next waypoint or engaging poshold mode.
+    auto_radius=2.0,
+
+    # The mininum altitude the vehicle will climb to while moving
+    # towards the home location in rth mode.
+    rth_min_y=30,
+
+    # The minimum horizontal velocity required by yaw heading mode to
+    # adjust yaw. This avoids having the quad spinning in place when
+    # stopped.
+    yaw_heading_min_z=2,
+
+    # The minimum absolute axis values where switching to rate mode occurs.
+    hybrid_pitch=0.9,
+    hybrid_roll=0.9,
+
+    # The maximum acceptable relative horizontal velocity for a
+    # vehicle in brake mode. This is the velocity at which poshold
+    # mode is engaged.
+    brake_velocity=1.0,
+
+    # The minimum radius around the vehicle for collision range. The
+    # whole vehicle must fit within the first radius.
+    collision_vehicle_radius=10,
+
+    # The max range in seconds that's considered when checking for collisions.
+    collision_range=3,
+
+    # Rate mode PID controller gain values, (Kp, Ki, Kd). Only Kp is
+    # needed.
+    rate_gain_pitch=(0, 0, 0),
+    rate_gain_yaw=(0, 0, 0),
+    rate_gain_roll=(0, 0, 0),
+
+    # Stabilize mode PID controller gain values.
+    stabilize_gain_pitch=(0, 0, 0),
+    stabilize_gain_yaw=(0, 0, 0),
+    stabilize_gain_roll=(0, 0, 0),
+
+    # Velocity mode PID controller values. Velocity was tuned by
+    # adjusting the Kp factor to get velocity to 3/4 of the setpoint,
+    # then adding Kd until it oscillates and cutting it down to 1/3,
+    # and finally by adjusting Ki until the setpoint is achieved
+    # without overshooting.
+    velocity_gain_x=(0, 0, 0),
+    velocity_gain_y=(0, 0, 0),
+    velocity_gain_z=(0, 0, 0),
+
+    # Altitude and Position Hold mode PID gain values. These
+    # gains go through the velocity, stabilize and rate PIDs, so they
+    # should be very small values. Ki is kept at zero to avoid overshooting,
+    # which is undesirable when flying autonomously.
+    althold_gain=(0, 0, 0),
+    poshold_gain_x=(0, 0, 0),
+    poshold_gain_z=(0, 0, 0),
+
+    # Auto mode PID values. These can be equal to poshold gain, or can
+    # be adjusted for more aggressive piloting.
+    auto_gain_x=(0, 0, 0),
+    auto_gain_y=(0, 0, 0),
+    auto_gain_z=(0, 0, 0),
+
+    # Yaw control mode PID gain values. This is the controller used by
+    # the vehicle to zero lateral velocity by adjusting yaw.
+    yaw_gain=(0, 0, 0),
+
+    )
 
 
 class Waypoint(object):
@@ -40,26 +185,26 @@ class Waypoint(object):
 
 class BaseRotor(object):
 
-    yaw_mode = 'lock'
-
-    def __init__(self, **config):
+    def __init__(self, **kwargs):
         clear_marks()
 
+        config = CONFIG_DEFAULTS.copy()
+        config.update(kwargs)
+
         self.hover = config['hovering_speed']
-        self.core = config['core_block']
+        self.core = Besiege.GetBlock(config['core_block'])
         self.core_height = None
 
-        self.motors = {k: v for (k, v) in config.iteritems() if k.startswith('motor_')}
+        self.motors = {}
+        for k, v in config['motors'].items():
+            self.motors[k] = [Besiege.GetBlock(b) for b in v]
 
-        self.axes = {'throttle': config['axis_throttle'],
-                     'pitch': config['axis_pitch'],
-                     'yaw': config['axis_yaw'],
-                     'roll': config['axis_roll'],
-                     }
+        self.axes = {k: AdvancedControls.GetAxis(v) for (k, v) in config['axes'].items()}
 
         self.keys = {k.split('_', 1)[1]: v for (k, v) in config.iteritems() if k.startswith('key_')}
 
         self.mode = [self.rate_mode]
+        self.yaw_mode = None
 
         self.position = Vector3()
         self.position_sp = Vector3()
@@ -71,21 +216,23 @@ class BaseRotor(object):
         self.velocity_sp = Vector3()
 
         self.rate_pid = (
-            pid.PID(config['rate_gain_pitch']),
-            pid.PID(config['rate_gain_yaw']),
-            pid.PID(config['rate_gain_roll']),
+            pid.PID(config['rate_gain_pitch'], limit_i=mm(1)),
+            pid.PID(config['rate_gain_yaw'], limit_i=mm(1)),
+            pid.PID(config['rate_gain_roll'], limit_i=mm(1)),
             )
 
+        self.yaw_pid = pid.PID(config['yaw_gain'], limit=mm(1))
+
         self.stabilize_pid = (
-            pid.AngularPID(config['stabilize_gain_pitch'], limit_i=mm(1)),
-            pid.AngularPID(config['stabilize_gain_yaw'], limit_i=mm(1)),
-            pid.AngularPID(config['stabilize_gain_roll'], limit_i=mm(1)),
+            pid.AngularPID(config['stabilize_gain_pitch']),
+            pid.AngularPID(config['stabilize_gain_yaw']),
+            pid.AngularPID(config['stabilize_gain_roll']),
             )
 
         self.velocity_pid = (
-            pid.PID(config['velocity_gain_x'], limit=mm(1), limit_i=mm(config['velocity_cf_x'])),
+            pid.PID(config['velocity_gain_x'], limit=mm(0.66), limit_i=mm(config['velocity_cf_x'])),
             pid.PID(config['velocity_gain_y'], limit=mm(1), limit_i=mm(config['velocity_cf_y'])),
-            pid.PID(config['velocity_gain_z'], limit=mm(1), limit_i=mm(config['velocity_cf_z'])),
+            pid.PID(config['velocity_gain_z'], limit=mm(0.66), limit_i=mm(config['velocity_cf_z'])),
             )
 
         self.althold_pid = pid.PID(config['althold_gain'], limit=mm(1))
@@ -102,24 +249,20 @@ class BaseRotor(object):
             pid.PID(config['auto_gain_z'], limit=mm(1)),
             )
 
-        self.plane_mode_pid = pid.PID(config['plane_gain'], limit=mm(1))
-
         self.home = None
 
         self._hold_yaw = None
 
-        clear_marks()
-
         self.waypoints = []
 
-        #self.waypoints = [
-        #    Waypoint(Vector3(-252.1, 76, 78.4)),
-        #    Waypoint(Vector3(-353.5, 123.4, 405.6)),
-        #    Waypoint(Vector3(17, 181, -7)),
-        #    Waypoint(Vector3(311, 181, 294)),
-        #    Waypoint(Vector3(176.9, 243.2, 314.7)),
-        #    Waypoint(Vector3(0, 2, 0)),
-        #    ]
+        self.waypoints = [
+            Waypoint(Vector3(200, 100, -1500)),
+            Waypoint(Vector3(100, 60, -1900)),
+            Waypoint(Vector3(1900, 60, -1900)),
+            Waypoint(Vector3(1900, 60, 1900)),
+            Waypoint(Vector3(-1900, 60, 1900)),
+            Waypoint(Vector3(-1900, 60, -1900)),
+            ]
 
         self.current_waypoint = None
         self.config = config
@@ -128,6 +271,19 @@ class BaseRotor(object):
 
         self._colmarks = [None, None]
         self._avdmarks = [None, None]
+
+    def __call__(self):
+        try:
+            self.update()
+        except Exception:
+            import sys
+            typ, val, tb = sys.exc_info()
+
+            Besiege.Watch('exc', str(typ))
+            Besiege.Watch('msg', val.message[-20:])
+            Besiege.Watch('file', tb.tb_frame.f_code.co_filename.split('/')[-1])
+            Besiege.Watch('line', tb.tb_lineno)
+            raise
 
     def get_controls(self):
         return [round(self.axes[k].OutputValue, 2) for k in ('throttle', 'pitch', 'yaw', 'roll')]
@@ -170,18 +326,19 @@ class BaseRotor(object):
         # get the current axes values
         self.controls = self.get_controls()
 
-        #self.get_collisions()
+        # self.get_collisions()
 
         # A mode function can return None if it's delegating to
         # another mode that was appended to the stack, or if it's
         # leaving the top of the stack. In that case, we loop until we
         # get a power adjustment response
-        power = None
-        while power is None:
-            power = self.mode[-1](*self.controls)
+        adjs = None
+        while adjs is None:
+            adjs = self.mode[-1](*self.controls)
 
         Besiege.Watch('dt', self.dt)
         Besiege.Watch('mode', self.mode[-1].__name__)
+        Besiege.Watch('yaw_mode', self.yaw_mode.__name__ if self.yaw_mode else 'none')
 
         Besiege.Watch('controls', pretty(self.controls))
 
@@ -202,7 +359,61 @@ class BaseRotor(object):
         # get ASL and real altitude
         Besiege.Watch('altitude', Vector2(self.position.y, self.position.y - self.terrain))
 
-        self.set_power(*power)
+        self.set_power(**self.get_power(*adjs))
+
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        raise NotImplementedError
+
+    def set_power(self, **power):
+        Besiege.Watch('power', pretty(power.values()))
+        Besiege.Watch('avg_power', sum(power.values()) / len(power))
+
+        for k, v in power.items():
+            v = pid.clip(v, -12, 12)
+            for m in self.motors[k]:
+                m.SetSliderValue('SPEED', v)
+
+    def set_yaw_lock(self):
+        self.yaw_mode = self.yaw_lock
+        self._hold_yaw = None
+
+    def yaw_lock(self, throttle, pitch, yaw, roll):
+        """Keeps the current yaw. Lock is disabled when the yaw control is
+        moved, and reengages to lock on the new yaw when released.
+
+        """
+        if yaw:
+            yaw_adj = yaw
+            self._hold_yaw = None
+
+        else:
+            if self._hold_yaw is None:
+                self._hold_yaw = self.rotation[1]
+                self.rotation_sp[1] = self.rotation[1]
+                self.stabilize_pid[1].reset()
+
+            self.stabilize_pid[1].setpoint = self.rotation_sp[1]
+            yaw_adj = self.stabilize_pid[1].update(self.rotation[1], self.dt)
+
+        return yaw_adj
+
+    def set_yaw_heading(self):
+        self.yaw_mode = self.yaw_heading
+
+    def yaw_heading(self, throttle, pitch, yaw, roll):
+        """Yaw is automatically adjust to zero lateral velocity, keeping the
+        vehicle pointed in the direction it's moving.
+
+        """
+        v = self.world_to_local(self.core.Velocity)
+
+        if math.hypot(v.x, v.z) > self.config['yaw_heading_min_z']:
+            return -self.yaw_pid.update(v.x, self.dt)
+
+        return self.yaw_lock(throttle, pitch, yaw, roll)
+
+    def set_yaw_null(self):
+        self.yaw_mode = None
 
     def set_rate_mode(self):
         self.mode[0] = self.rate_mode
@@ -213,15 +424,21 @@ class BaseRotor(object):
         directly.
 
         """
+        if self.yaw_mode:
+            yaw = self.yaw_mode(throttle, pitch, yaw, roll)
+
         self.rate_sp.Set(
             pitch * self.config['rate_cf_pitch'],
             yaw * self.config['rate_cf_yaw'],
             roll * self.config['rate_cf_roll'],
             )
 
-        self.rate_pid[0].setpoint = self.rate_sp[0]
-        self.rate_pid[1].setpoint = self.rate_sp[1]
-        self.rate_pid[2].setpoint = self.rate_sp[2]
+        for i in xrange(3):
+            # if controls are released, reset the PID
+            if self.rate_sp[i] == 0:
+                self.rate_pid[i].reset()
+
+            self.rate_pid[i].setpoint = self.rate_sp[i]
 
         pitch_adj = self.rate_pid[0].update(self.rate[0], self.dt)
         yaw_adj = self.rate_pid[1].update(self.rate[1], self.dt)
@@ -259,26 +476,7 @@ class BaseRotor(object):
         pitch_adj = self.stabilize_pid[0].update(self.rotation[0], self.dt)
         roll_adj = self.stabilize_pid[2].update(self.rotation[2], self.dt)
 
-        # yaw input controls the rate as if in rate mode, but if
-        # the yaw stick is released, the quad holds the current yaw
-        if yaw:
-            yaw_adj = yaw
-            self._hold_yaw = None
-
-        else:
-            if self._hold_yaw is None:
-                self._hold_yaw = self.rotation[1]
-                self.rotation_sp[1] = self.rotation[1]
-                self.stabilize_pid[1].reset()
-
-            self.stabilize_pid[1].setpoint = self.rotation_sp[1]
-            yaw_adj = self.stabilize_pid[1].update(self.rotation[1], self.dt)
-
-        self.rotation_sp = Vector3(self.stabilize_pid[0].setpoint,
-                                   self.stabilize_pid[1].setpoint,
-                                   self.stabilize_pid[2].setpoint)
-
-        return self.rate_mode(throttle, pitch_adj, yaw_adj, roll_adj)
+        return self.rate_mode(throttle, pitch_adj, yaw, roll_adj)
 
     def set_velocity_mode(self):
         self.mode[0] = self.velocity_mode
@@ -389,7 +587,7 @@ class BaseRotor(object):
 
         """
         if self.position_sp_distance[2] > 1:
-            return self.goto_position()
+            return self.goto_position(throttle, pitch, yaw, roll)
 
         self.set_land_mode()
 
@@ -434,7 +632,7 @@ class BaseRotor(object):
 
         if self.current_waypoint:
             if self.position_sp_distance[2] > self.config['auto_radius']:
-                return self.goto_position()
+                return self.goto_position(throttle, pitch, yaw, roll)
 
             else:
                 self.current_waypoint.clear()
@@ -479,7 +677,8 @@ class BaseRotor(object):
 
         Besiege.Watch("panic", "set next waypoint")
 
-    def goto_position(self):
+    def goto_position(self, throttle, pitch, yaw, roll):
+
         h, v, t = self.position_sp_distance
 
         x, y, z = self.position_sp_local
@@ -505,31 +704,7 @@ class BaseRotor(object):
         throttle_adj = self.auto_pid[1].update(-self.position_sp_local[1], self.dt)
         pitch_adj = self.auto_pid[2].update(-self.position_sp_local[2], self.dt)
 
-        if self.yaw_mode == 'lock':
-            yaw_adj = 0
-
-        elif self.yaw_mode == 'heading':
-            yaw_adj = -self.plane_mode_pid.update(self.velocity.x, self.dt)
-
-        return self.velocity_mode(throttle_adj, pitch_adj, yaw_adj, roll_adj)
-
-    def set_plane_mode(self):
-        self.mode[0] = self.plane_mode
-        self.plane_mode_pid.reset()
-
-    def plane_mode(self, throttle, pitch, yaw, roll):
-        """The Plane mode works like rate mode, but the vehicle can be
-        controlled using only the pitch and roll axes. It will
-        automatically adjust yaw to zero all lateral velocity.
-
-        """
-
-        v = self.world_to_local(self.core.Velocity)
-
-        if self.velocity.z > self.config['plane_min_z']:
-            yaw = -self.plane_mode_pid.update(v.x, self.dt)
-
-        return self.rate_mode(throttle, pitch, yaw, roll)
+        return self.velocity_mode(throttle_adj, pitch_adj, yaw, roll_adj)
 
     def set_brake_mode(self):
         self.mode[0] = self.brake_mode
@@ -746,232 +921,120 @@ class BaseRotor(object):
 
 class XQuad(BaseRotor):
 
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        h = self.hover
 
-        power = {
-            'motor_fl': hover + hover * (throttle_adj - pitch_adj - roll_adj - yaw_adj),
-            'motor_fr': hover + hover * (throttle_adj - pitch_adj + roll_adj + yaw_adj),
-            'motor_bl': hover + hover * (throttle_adj + pitch_adj - roll_adj + yaw_adj),
-            'motor_br': hover + hover * (throttle_adj + pitch_adj + roll_adj - yaw_adj),
+        return {
+            'fl': h + h * (throttle_adj - pitch_adj - roll_adj - yaw_adj),
+            'fr': h + h * (throttle_adj - pitch_adj + roll_adj + yaw_adj),
+            'bl': h + h * (throttle_adj + pitch_adj - roll_adj + yaw_adj),
+            'br': h + h * (throttle_adj + pitch_adj + roll_adj - yaw_adj),
             }
-
-        Besiege.Watch('power', pretty(power.values()))
-        Besiege.Watch('avg_power', sum(power.values()) / 4)
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
 
 
 class PlusQuad(BaseRotor):
 
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        h = self.hover
 
-        power = {
-            'motor_f': hover + hover * (throttle_adj - pitch_adj - yaw_adj),
-            'motor_b': hover + hover * (throttle_adj + pitch_adj - yaw_adj),
-            'motor_l': hover + hover * (throttle_adj - roll_adj + yaw_adj),
-            'motor_r': hover + hover * (throttle_adj + roll_adj + yaw_adj),
+        return {
+            'f': h + h * (throttle_adj - pitch_adj - yaw_adj),
+            'b': h + h * (throttle_adj + pitch_adj - yaw_adj),
+            'l': h + h * (throttle_adj - roll_adj + yaw_adj),
+            'r': h + h * (throttle_adj + roll_adj + yaw_adj),
             }
-
-        Besiege.Watch('power', Vector4(*power.values()))
-        Besiege.Watch('avg_power', sum(power.values()) / 4)
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
 
 
 class Y6(BaseRotor):
 
-    yaw_mode = 'heading'
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        h = self.hover
 
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
+        return {
+            'l1': h + h * (throttle_adj - pitch_adj - roll_adj - yaw_adj),
+            'l2': h + h * (throttle_adj - pitch_adj - roll_adj + yaw_adj),
 
-        power = {
-            'motor_l1': hover + hover * (throttle_adj - pitch_adj - roll_adj - yaw_adj),
-            'motor_l2': hover + hover * (throttle_adj - pitch_adj - roll_adj + yaw_adj),
+            'r1': h + h * (throttle_adj - pitch_adj + roll_adj + yaw_adj),
+            'r2': h + h * (throttle_adj - pitch_adj + roll_adj - yaw_adj),
 
-            'motor_r1': hover + hover * (throttle_adj - pitch_adj + roll_adj + yaw_adj),
-            'motor_r2': hover + hover * (throttle_adj - pitch_adj + roll_adj - yaw_adj),
-
-            'motor_b1': hover + hover * (throttle_adj + pitch_adj + yaw_adj),
-            'motor_b2': hover + hover * (throttle_adj + pitch_adj - yaw_adj),
+            'b1': h + h * (throttle_adj + pitch_adj + yaw_adj),
+            'b2': h + h * (throttle_adj + pitch_adj - yaw_adj),
             }
-
-        Besiege.Watch('power', '(' + ', '.join(['%0.2f' % x for x in power.values()]) + ')')
-        Besiege.Watch('avg_power', sum(power.values()) / len(power))
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
 
 
 class Y4(BaseRotor):
 
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        h = self.hover
 
-        power = {
-            'motor_l': hover + hover * (throttle_adj - pitch_adj - roll_adj),
-            'motor_r': hover + hover * (throttle_adj - pitch_adj + roll_adj),
-            'motor_bu': hover + hover * (throttle_adj + pitch_adj - yaw_adj),
-            'motor_bd': hover + hover * (throttle_adj + pitch_adj + yaw_adj),
+        # tail rotors need idle tuning
+        return {
+            'l': h + h * (throttle_adj - pitch_adj - roll_adj),
+            'r': h + h * (throttle_adj - pitch_adj + roll_adj),
+            'bu': h + h * (throttle_adj + pitch_adj - yaw_adj),
+            'bd': h + h * (throttle_adj + pitch_adj + yaw_adj),
             }
-
-        Besiege.Watch('power', pretty(power.values()))
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
-
-        Besiege.Watch('avg_power', sum(power.values()) / len(power))
-
-
-class Tricopter(BaseRotor):
-
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
-
-        power = {
-            'motor_l': hover + hover * (throttle_adj - pitch_adj - roll_adj),
-            'motor_r': hover + hover * (throttle_adj - pitch_adj + roll_adj),
-            'motor_b': hover + hover * (pitch_adj),
-            }
-
-        Besiege.Watch('power', pretty(power.values()))
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
-
-        yaw_adj = pid.clip(yaw_adj, -15, 15)
-
-        Besiege.Watch('yaw_adj', yaw_adj)
-
-        self.motors['motor_yaw_servo'][0].SetAngle(yaw_adj)
 
 
 class BicopterLR(BaseRotor):
 
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
         hover = self.hover
 
         power = {
-            'motor_l': hover + hover * (throttle_adj - roll_adj),
-            'motor_r': hover + hover * (throttle_adj + roll_adj),
+            'l': hover + hover * (throttle_adj - roll_adj),
+            'r': hover + hover * (throttle_adj + roll_adj),
             }
 
-        Besiege.Watch('power', pretty(power.values()))
+        self.motors['pitch'][0].SetAngle(pitch_adj + yaw_adj)
+        self.motors['pitch'][1].SetAngle(pitch_adj - yaw_adj)
 
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
-
-        self.motors['motor_pitch'][0].SetAngle(pitch_adj + yaw_adj)
-        self.motors['motor_pitch'][1].SetAngle(pitch_adj - yaw_adj)
+        return power
 
 
 class T4(BaseRotor):
 
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        h = self.hover
 
-        power = {
-            'motor_l': hover + hover * (throttle_adj - roll_adj),
-            'motor_r': hover + hover * (throttle_adj + roll_adj),
-            'motor_bu': hover + hover * (throttle_adj + pitch_adj - yaw_adj),
-            'motor_bd': hover + hover * (throttle_adj + pitch_adj + yaw_adj),
+        # tail rotors need idle tuning
+        return {
+            'l': h + h * (throttle_adj - roll_adj),
+            'r': h + h * (throttle_adj + roll_adj),
+            'bu': h + h * (throttle_adj + pitch_adj - yaw_adj),
+            'bd': h + h * (throttle_adj + pitch_adj + yaw_adj),
             }
-
-        Besiege.Watch('power', pretty(power.values()))
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
-
-        Besiege.Watch('avg_power', sum(power.values()) / len(power))
 
 
 class Dualcopter(BaseRotor):
 
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        h = self.hover
 
         power = {
-            'motor_u': hover + hover * (throttle_adj - yaw_adj),
-            'motor_d': hover + hover * (throttle_adj + yaw_adj),
+            'u': h + h * (throttle_adj - yaw_adj),
+            'd': h + h * (throttle_adj + yaw_adj),
             }
 
-        Besiege.Watch('power', pretty(power.values()))
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
-
-        Besiege.Watch('avg_power', sum(power.values()) / len(power))
-
-        for m in self.motors['motor_pitch']:
+        for m in self.motors['pitch']:
             m.SetAngle(pid.clip(pitch_adj, -15, 15))
 
-        for m in self.motors['motor_roll']:
+        for m in self.motors['roll']:
             m.SetAngle(pid.clip(roll_adj, -15, 15))
 
-
-class Helicopter(BaseRotor):
-
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
-
-        power = {
-            'motor_u': hover + hover * throttle_adj,
-            'motor_t': yaw_adj + hover,
-            }
-
-        Besiege.Watch('power', pretty(power.values()))
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)
-
-        Besiege.Watch('avg_power', sum(power.values()) / len(power))
-
-        for m in self.motors['motor_pitch']:
-            m.SetAngle(pid.clip(pitch_adj, -15, 15))
-
-        for m in self.motors['motor_roll']:
-            m.SetAngle(pid.clip(roll_adj, -15, 15))
+        return power
 
 
 class HexaX(BaseRotor):
-    def set_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
-        hover = self.hover
 
-        power = {
-            'motor_1': hover + hover * (throttle_adj + roll_adj - yaw_adj),
-            'motor_2': hover + hover * (throttle_adj - roll_adj + yaw_adj),
-            'motor_3': hover + hover * (throttle_adj - roll_adj - yaw_adj - pitch_adj),
-            'motor_4': hover + hover * (throttle_adj + roll_adj + yaw_adj + pitch_adj),
-            'motor_5': hover + hover * (throttle_adj + roll_adj + yaw_adj - pitch_adj),
-            'motor_6': hover + hover * (throttle_adj - roll_adj - yaw_adj + pitch_adj),
+    def get_power(self, throttle_adj, pitch_adj, yaw_adj, roll_adj):
+        h = self.hover
+
+        return {
+            '1': h + h * (throttle_adj + roll_adj - yaw_adj),
+            '2': h + h * (throttle_adj - roll_adj + yaw_adj),
+            '3': h + h * (throttle_adj - roll_adj - yaw_adj - pitch_adj),
+            '4': h + h * (throttle_adj + roll_adj + yaw_adj + pitch_adj),
+            '5': h + h * (throttle_adj + roll_adj + yaw_adj - pitch_adj),
+            '6': h + h * (throttle_adj - roll_adj - yaw_adj + pitch_adj),
             }
-
-        Besiege.Watch('power', pretty(power.values()))
-        Besiege.Watch('avg_power', sum(power.values()) / len(power))
-
-        for k, v in power.items():
-            v = pid.clip(v, -12, 12)
-            for m in self.motors[k]:
-                m.SetSliderValue('SPEED', v)

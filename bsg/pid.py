@@ -35,7 +35,7 @@ class PID(object):
 
         self.integral = self.integral + error * dt * self.Ki * self.gain_f
         if self.limit_i:
-            self.integral = clip(self.integral, * self.limit_i)
+            self.integral = clip(self.integral, *self.limit_i)
 
         d = (error - self.last_error) / dt
 
