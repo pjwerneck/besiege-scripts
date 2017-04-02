@@ -2,6 +2,12 @@
 import math
 
 import clr
+
+clr.AddReference("System")
+clr.AddReference("UnityEngine")
+clr.AddReference('AdvancedControlsMod')
+clr.AddReference("LenchScripterMod")
+
 from Lench.AdvancedControls import AdvancedControls
 from Lench.Scripter import Functions as Besiege
 from UnityEngine import Color
@@ -19,10 +25,6 @@ from .utils import mm
 from .utils import pretty
 
 
-clr.AddReference("System")
-clr.AddReference("UnityEngine")
-clr.AddReference('AdvancedControlsMod')
-clr.AddReference("LenchScripterMod")
 
 
 CONFIG_DEFAULTS = dict(
@@ -193,7 +195,7 @@ class BaseRotor(object):
 
         self.hover = config['hovering_speed']
         self.core = Besiege.GetBlock(config['core_block'])
-        self.core_height = None
+        self.core_height = config['core_height']
 
         self.motors = {}
         for k, v in config['motors'].items():
@@ -230,9 +232,9 @@ class BaseRotor(object):
             )
 
         self.velocity_pid = (
-            pid.PID(config['velocity_gain_x'], limit=mm(0.66), limit_i=mm(config['velocity_cf_x'])),
+            pid.PID(config['velocity_gain_x'], limit=mm(2.0 / 3), limit_i=mm(config['velocity_cf_x'])),
             pid.PID(config['velocity_gain_y'], limit=mm(1), limit_i=mm(config['velocity_cf_y'])),
-            pid.PID(config['velocity_gain_z'], limit=mm(0.66), limit_i=mm(config['velocity_cf_z'])),
+            pid.PID(config['velocity_gain_z'], limit=mm(2.0 / 3), limit_i=mm(config['velocity_cf_z'])),
             )
 
         self.althold_pid = pid.PID(config['althold_gain'], limit=mm(1))
@@ -302,10 +304,10 @@ class BaseRotor(object):
             return
 
         if self._first_update:
-            self.home = self.core.Position
+            # self.home = self.core.Position
 
-            if self.core_height is None:
-                self.core_height = self.core.Position.y
+            # if self.core_height is None:
+            #     self.core_height = self.core.Position.y
             # Besiege.ClearMarks()  # ClearMarks is broken
 
             self._first_update = False
@@ -681,8 +683,6 @@ class BaseRotor(object):
 
         h, v, t = self.position_sp_distance
 
-        x, y, z = self.position_sp_local
-
         self.auto_pid[0].gain_f = 0.8
         self.auto_pid[1].gain_f = 0.8
         self.auto_pid[2].gain_f = 0.8
@@ -699,6 +699,12 @@ class BaseRotor(object):
         # if above target, prioritize moving, so lower y gain
         if h > 10 and v < -10:
             self.auto_pid[1].gain_f = p
+
+        auto_error = Vector3(self.auto_pid[0].last_error,
+                             self.auto_pid[1].last_error,
+                             self.auto_pid[2].last_error)
+
+        Besiege.Watch('auto_error', auto_error)
 
         roll_adj = self.auto_pid[0].update(self.position_sp_local[0], self.dt)
         throttle_adj = self.auto_pid[1].update(-self.position_sp_local[1], self.dt)

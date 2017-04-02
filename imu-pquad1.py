@@ -3,7 +3,7 @@
 from bsg.rotor import PlusQuad
 
 
-FixedUpdate = PlusQuad(
+Update = PlusQuad(
     hovering_speed=1.13,
 
     motors={

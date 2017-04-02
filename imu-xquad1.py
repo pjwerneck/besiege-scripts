@@ -3,7 +3,7 @@
 from bsg.rotor import XQuad
 
 
-FixedUpdate = XQuad(
+Update = XQuad(
     hovering_speed=1.16,
 
     motors={
@@ -43,9 +43,9 @@ FixedUpdate = XQuad(
 
     # Auto mode PID values. These can be equal to poshold gain, or can
     # be adjusted for more aggressive piloting.
-    auto_gain_x=(0.0072, 0, 0.0005),
-    auto_gain_y=(0.022, 0, 0.01),
-    auto_gain_z=(0.0072, 0, 0.0005),
+    auto_gain_x=(0.0066, 0, 0),
+    auto_gain_y=(0.022, 0, 0),
+    auto_gain_z=(0.0066, 0, 0),
 
     # Yaw control mode PID gain values. This is the controller used by
     # the vehicle to zero lateral velocity by adjusting yaw.

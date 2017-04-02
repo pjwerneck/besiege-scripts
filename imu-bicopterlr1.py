@@ -3,7 +3,7 @@
 from bsg.rotor import BicopterLR
 
 
-FixedUpdate = BicopterLR(
+Update = BicopterLR(
 
     hovering_speed=1.13,
 

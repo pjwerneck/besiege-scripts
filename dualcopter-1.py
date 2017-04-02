@@ -3,7 +3,7 @@
 from bsg.rotor import Dualcopter
 
 
-FixedUpdate = Dualcopter(
+Update = Dualcopter(
     hovering_speed=1.15,
 
     motors={

@@ -60,13 +60,28 @@ In Auto mode, the vehicle will move autonomously to every waypoint, removing the
 
 The autopilot is smart enough to detect obstacles between waypoints and plot a new course around them if necessary. 
 
-#### Plane Mode
-
-The Plane mode works like rate mode, but the vehicle can be controlled using only the pitch and roll axes. It will automatically adjust yaw to zero all lateral velocity.
-
 #### Brake Mode
 
 In brake mode, the vehicle attempts to zero all horizontal velocity as quickly as possible, engaging Position Hold mode after it stops.
+
+
+### Yaw Modes
+
+Yaw is controlled by its own modes, independently of the current flight mode.
+
+#### Yaw Null
+
+Yaw is controlled as if in rate mode. The yaw axis changes current rate of rotation.
+
+#### Yaw Lock
+
+The yaw axis changes the current yaw as if in rate mode, and the current rotation is maintained when the stick is released.
+
+#### Yaw Heading
+
+Yaw is automatically adjusted so the vehicle's heading is the same as the velocity vector, cancelling all lateral velocity. With this you can fly a multicopter with only a single dual-axis stick, as if it were a plane.
+
+
 
 ### Models
 

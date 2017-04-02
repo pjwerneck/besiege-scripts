@@ -3,7 +3,7 @@
 from bsg.rotor import Y4
 
 
-FixedUpdate = Y4(
+Update = Y4(
     hovering_speed=1.06,
 
     motors={'l': ['SPINNING 1'],

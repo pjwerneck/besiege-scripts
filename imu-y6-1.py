@@ -3,7 +3,7 @@
 from bsg.rotor import Y6
 
 
-FixedUpdate = Y6(
+Update = Y6(
     hovering_speed=1,
 
     motors={

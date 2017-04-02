@@ -3,7 +3,7 @@
 from bsg.rotor import HexaX
 
 
-FixedUpdate = HexaX(
+Update = HexaX(
     hovering_speed=1.07,
 
     motors={'1': ['SPINNING 1'],
